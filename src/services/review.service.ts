@@ -44,6 +44,12 @@ export class ReviewService {
       .pipe(map(data => DeserializeArray(data, () => Review)));
   }
 
+  createReview(review: Review): Observable<Review> {
+    return this.http
+      .post<IJsonObject>(`${this.path}/`, Serialize(review, () => Review))
+      .pipe(map(data => Deserialize(data, () => Review)));
+  }
+
   updateReview(review: Review): Observable<Review> {
     return this.http
       .put<IJsonObject>(

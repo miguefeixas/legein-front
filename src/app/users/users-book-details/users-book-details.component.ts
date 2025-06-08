@@ -59,6 +59,23 @@ export class UsersBookDetailsComponent implements OnInit {
   }
 
   submitReview(): void {
+    if (this.reviewForm.invalid || !this.book) {
+      this.reviewForm.markAllAsTouched();
+      return;
+    }
 
+    const newReview: Partial<Review> = {
+      rating: this.reviewForm.get('rating')?.value,
+      content: this.reviewForm.get('content')?.value,
+      title: this.reviewForm.get('title')?.value,
+      bookId: this.book.id,
+    };
+
+    this.reviewService
+      .createReview(newReview as Review)
+      .subscribe(review => {
+        this.reviews.push(review);
+        this.reviewForm.reset();
+      });
   }
 }
