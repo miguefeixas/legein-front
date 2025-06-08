@@ -1,0 +1,7 @@
+@use '../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.grey-background(100);
+  display: block !important;
+  min-height: 100% !important;
+}

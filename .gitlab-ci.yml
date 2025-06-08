@@ -1,0 +1,34 @@
+image: node:22.4.1
+
+cache:
+  paths:
+    - dist/
+    - node_modules/
+
+stages: # List of stages for jobs, and their order of execution
+  - install_dependencies
+  - install_angular
+  - build
+  - test
+
+install_dependencies: # Install Angular CLI and the project dependencies
+  stage: install_dependencies
+  image: node:22.4.1
+  script:
+    - echo $CI_PROJECT_DIR
+    - npm install
+
+  artifacts:
+    paths:
+      - node_modules/
+
+build: # Build the project
+  stage: build
+  script:
+    - npm run build
+    - ls dist/
+
+lint: # Run ESLint
+  stage: test
+  script:
+    - npm run lint

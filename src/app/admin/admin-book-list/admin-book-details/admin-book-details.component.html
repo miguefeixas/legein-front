@@ -1,0 +1,407 @@
+<div class="main-padding column gap-sm">
+  <div class="row gap horizontal-space-between vertical-end">
+    <div class="row gap horizontal-start vertical-center">
+      <h2>{{ bookTitle }}</h2>
+      <ion-icon class="icon-xxs primary-color-100" name="ellipse"></ion-icon>
+      <div class="row gap-sm">
+        <h2 class="title-author">{{ mainAuthor?.fullName }}</h2>
+        @if (numberOfAuthors > 1) {
+          <p
+            [matTooltip]="listOfAuthors"
+            class="more-authors"
+            [innerHTML]="
+              'ADMINBOOKDETAILS.ANDMORE'
+                | translate: { numberOfAuthors: numberOfAuthors - 1 }
+            "></p>
+        }
+      </div>
+    </div>
+    @if (!isEditing) {
+      <div class="row vertical-center horizontal-end gap">
+        <a (click)="toggleEdit()" class="text-button"
+          >{{ 'COMMONTRANSLATIONS.EDIT' | translate
+          }}<ion-icon class="icon-sm" name="create-outline"></ion-icon
+        ></a>
+        <button
+          mat-button
+          class="button button--secondary"
+          [matMenuTriggerFor]="statusMenu">
+          {{ 'ADMINBOOKDETAILS.EDITSTATUS' | translate
+          }}<ion-icon class="icon-sm" name="chevron-down-outline"></ion-icon>
+        </button>
+        <mat-menu #statusMenu="matMenu">
+          @if (book?.status !== bookStatus.ACTIVE) {
+            <button (click)="editStatus(bookStatus.ACTIVE)" mat-menu-item>
+              {{ 'COMMONTRANSLATIONS.BOOKSTATUS.ACTIVE' | translate }}
+              <ion-icon
+                class="icon-md"
+                name="checkmark-done-outline"></ion-icon>
+            </button>
+          }
+          @if (book?.status !== bookStatus.PENDING) {
+            <button (click)="editStatus(bookStatus.PENDING)" mat-menu-item>
+              {{ 'COMMONTRANSLATIONS.BOOKSTATUS.PENDING' | translate }}
+              <ion-icon class="icon-md" name="pause-outline"></ion-icon>
+            </button>
+          }
+          @if (book?.status !== bookStatus.REJECTED) {
+            <button (click)="editStatus(bookStatus.REJECTED)" mat-menu-item>
+              {{ 'COMMONTRANSLATIONS.BOOKSTATUS.REJECTED' | translate }}
+              <ion-icon class="icon-md" name="close-outline"></ion-icon>
+            </button>
+          }
+          @if (book?.status !== bookStatus.DELETED) {
+            <button (click)="editStatus(bookStatus.DELETED)" mat-menu-item>
+              {{ 'COMMONTRANSLATIONS.BOOKSTATUS.DELETED' | translate }}
+              <ion-icon class="icon-md" name="trash-outline"></ion-icon>
+            </button>
+          }
+        </mat-menu>
+      </div>
+    } @else {
+      <div class="row gap-sm center">
+        <a (click)="toggleEdit()" class="text-button text-button--grey"
+          >{{ 'COMMONTRANSLATIONS.DISCARD' | translate
+          }}<ion-icon class="icon-sm" name="close-outline"></ion-icon
+        ></a>
+        <a
+          (click)="updateBook()"
+          class="text-button"
+          [ngClass]="checkFormPristine() ? 'disabled' : ''"
+          >{{ 'COMMONTRANSLATIONS.SAVE' | translate
+          }}<ion-icon class="icon-sm" name="save-outline"></ion-icon
+        ></a>
+      </div>
+    }
+  </div>
+  <div class="row gap">
+    <div class="cover-container">
+      <h3>{{ 'ADMINBOOKDETAILS.COVER' | translate }}</h3>
+      <div class="cover-container__image-wrapper" (click)="onCoverClick()">
+        <img
+          [ngClass]="isEditing ? 'cover-container__cover--editing' : ''"
+          [src]="bookCover"
+          alt="{{ book?.title }}"
+          class="cover-container__cover" />
+        @if (isEditing) {
+          <span class="cover-container__hover-text text-sm">
+            {{ 'ADMINBOOKDETAILS.CHANGECOVER' | translate }}
+          </span>
+        }
+      </div>
+      <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        hidden
+        accept=".jpg,.jpeg,.png"
+        aria-label="Cover image" />
+    </div>
+    <div class="data-container">
+      @if (!isEditing) {
+        <h3>{{ 'ADMINBOOKDETAILS.INFORMATION' | translate }}</h3>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.PUBLISHER' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{
+            book?.publisher?.name
+          }}</span>
+        </div>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.PUBLICATIONYEAR' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{
+            book?.publicationYear
+          }}</span>
+        </div>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.MAINGENRE' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{
+            'GENRES.' + book?.genres?.[0]?.name | translate
+          }}</span>
+        </div>
+        @if (numberOfGenres > 1) {
+          <div class="data-container__data">
+            <span class="data-container__data__label"
+              >{{ 'ADMINBOOKDETAILS.SECONDARYGENRE' | translate }}:</span
+            >
+            <span class="data-container__data__value">{{
+              'GENRES.' + book?.genres?.[1]?.name | translate
+            }}</span>
+          </div>
+        }
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.PAGES' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{ book?.pages }}</span>
+        </div>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.ISBN' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{ book?.isbn }}</span>
+        </div>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.STATUS' | translate }}:</span
+          >
+          <div class="row gap-sm vertical-center horizontal-start">
+            <span class="data-container__data__value">{{
+              'BOOKS.TABLE.STATUS.' + book?.status | translate
+            }}</span>
+            <ion-icon
+              [ngClass]="statusClass"
+              [name]="statusIcon"
+              class="icon-xs"></ion-icon>
+          </div>
+        </div>
+        <div class="data-container__data">
+          <span class="data-container__data__label"
+            >{{ 'ADMINBOOKDETAILS.LANGUAGE' | translate }}:</span
+          >
+          <span class="data-container__data__value">{{ book?.language }}</span>
+        </div>
+        <div class="overview-container">
+          <span class="data-container__data__label">{{
+            'ADMINBOOKDETAILS.OVERVIEW' | translate
+          }}</span>
+          <span [innerHTML]="book?.overview"></span>
+        </div>
+      } @else {
+        <form [formGroup]="bookForm">
+          <div class="row horizontal-start vertical-start gap-sm">
+            <div class="column gap-sm">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.TITLE' | translate
+              }}</mat-label>
+              <mat-form-field class="form-input form-input--lg">
+                <input
+                  matInput
+                  formControlName="title"
+                  placeholder="{{
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.TITLE' | translate
+                  }}" />
+                @if (bookForm.get('title')?.hasError('required')) {
+                  <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="column gap-sm">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.ISBN' | translate
+              }}</mat-label>
+              <mat-form-field class="form-input form-input--lg">
+                <input
+                  matInput
+                  maxlength="13"
+                  minlength="10"
+                  formControlName="isbn"
+                  placeholder="{{
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.ISBN' | translate
+                  }}" />
+                @if (bookForm.get('isbn')?.hasError('required')) {
+                  <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+                }
+                @if (bookForm.get('isbn')?.hasError('maxlength')) {
+                  <mat-error>{{
+                    'ADDBOOKMODAL.FORM.ERRORS.MAXISBNLENGTH' | translate
+                  }}</mat-error>
+                }
+                @if (bookForm.get('isbn')?.hasError('minlength')) {
+                  <mat-error>{{
+                    'ADDBOOKMODAL.FORM.ERRORS.MINISBNLENGHT' | translate
+                  }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="column gap-sm">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.AUTHOR' | translate
+              }}</mat-label>
+              <mat-form-field class="form-input form-input--lg">
+                <mat-select
+                  formControlName="authorIds"
+                  placeholder="{{
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.AUTHOR' | translate
+                  }}"
+                  multiple>
+                  @for (author of authors; track author) {
+                    <mat-option value="{{ author.id }}">
+                      {{ author.fullName }}
+                    </mat-option>
+                  }
+                </mat-select>
+                @if (bookForm.get('authorIds')?.hasError('required')) {
+                  <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row vertical-center gap-sm">
+            <div class="column gap-sm">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.PUBLISHER' | translate
+              }}</mat-label>
+              <mat-form-field class="form-input form-input--lg">
+                <mat-select
+                  formControlName="publisherId"
+                  placeholder="{{
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.PUBLISHER' | translate
+                  }}">
+                  @for (publisher of publishers; track publisher) {
+                    <mat-option value="{{ publisher.id }}">
+                      {{ publisher.name }}
+                    </mat-option>
+                  }
+                </mat-select>
+                @if (bookForm.get('publisherId')?.hasError('required')) {
+                  <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="column gap-sm">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.MAINGENRE' | translate
+              }}</mat-label>
+              <mat-form-field class="form-input form-input--lg">
+                <mat-select
+                  formControlName="mainGenreId"
+                  placeholder="{{
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.MAINGENRE' | translate
+                  }}">
+                  @for (genre of genres; track genre) {
+                    <mat-option value="{{ genre.id }}">
+                      {{ 'GENRES.' + genre.name | translate }}
+                    </mat-option>
+                  }
+                </mat-select>
+                @if (bookForm.get('mainGenreId')?.hasError('required')) {
+                  <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="row vertical-center gap-ml">
+              <div class="column gap-sm">
+                <mat-label>{{
+                  'ADDBOOKMODAL.FORM.LABELS.SECONDARYGENRE' | translate
+                }}</mat-label>
+                <mat-form-field class="form-input form-input--lg">
+                  <mat-select
+                    formControlName="secondaryGenreId"
+                    placeholder="{{
+                      'ADDBOOKMODAL.FORM.PLACEHOLDERS.SECONDARYGENRE'
+                        | translate
+                    }}">
+                    @for (genre of genres; track genre) {
+                      <mat-option value="{{ genre.id }}">
+                        {{ 'GENRES.' + genre.name | translate }}
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row vertical-start gap-sm">
+            <div class="column gap-sm">
+              <div class="row gap-sm">
+                <div class="column gap-sm">
+                  <mat-label>{{
+                    'ADDBOOKMODAL.FORM.LABELS.PAGES' | translate
+                  }}</mat-label>
+                  <mat-form-field
+                    class="form-input form-input--xxs pages-field">
+                    <input
+                      matInput
+                      formControlName="pages"
+                      placeholder="{{
+                        'ADDBOOKMODAL.FORM.PLACEHOLDERS.PAGES' | translate
+                      }}" />
+                    @if (bookForm.get('pages')?.hasError('required')) {
+                      <mat-error>{{
+                        'COMMONTRANSLATIONS.REQUIRED' | translate
+                      }}</mat-error>
+                    }
+                  </mat-form-field>
+                </div>
+                <div class="column gap-sm">
+                  <mat-label>{{
+                    'ADDBOOKMODAL.FORM.LABELS.PUBLICATIONYEAR' | translate
+                  }}</mat-label>
+                  <mat-form-field class="form-input form-input--xs">
+                    <input
+                      matInput
+                      formControlName="publicationYear"
+                      placeholder="{{
+                        'ADDBOOKMODAL.FORM.PLACEHOLDERS.PUBLICATIONYEAR'
+                          | translate
+                      }}" />
+                    @if (
+                      bookForm.get('publicationYear')?.hasError('required')
+                    ) {
+                      <mat-error>{{
+                        'COMMONTRANSLATIONS.REQUIRED' | translate
+                      }}</mat-error>
+                    }
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="column gap-sm">
+                <mat-label>{{
+                  'ADDBOOKMODAL.FORM.PLACEHOLDERS.LANGUAGE' | translate
+                }}</mat-label>
+                <mat-form-field class="form-input form-input--lg">
+                  <input
+                    matInput
+                    formControlName="language"
+                    placeholder="{{
+                      'ADDBOOKMODAL.FORM.PLACEHOLDERS.LANGUAGE' | translate
+                    }}" />
+                  @if (bookForm.get('language')?.hasError('required')) {
+                    <mat-error>{{
+                      'ADDBOOKMODAL.FORM.ERRORS.LANGUAGE' | translate
+                    }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="column gap-sm overview-edit-container">
+              <mat-label>{{
+                'ADDBOOKMODAL.FORM.LABELS.OVERVIEW' | translate
+              }}</mat-label>
+              <div class="overview-edit-container__editor">
+                <ngx-editor-menu
+                  class="overview-edit-container__menu"
+                  [toolbar]="toolbar"
+                  [editor]="editor">
+                </ngx-editor-menu>
+                <ngx-editor
+                  [editor]="editor"
+                  formControlName="overview"
+                  [disabled]="false"
+                  [placeholder]="
+                    'ADDBOOKMODAL.FORM.PLACEHOLDERS.OVERVIEW' | translate
+                  "></ngx-editor>
+              </div>
+            </div>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</div>

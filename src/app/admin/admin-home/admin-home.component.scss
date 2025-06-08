@@ -1,0 +1,53 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.kpis-container {
+  @include mix.column;
+  @include mix.gap-sm;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+}
+
+.kpis {
+  @include mix.row;
+  @include mix.horizontal-space-between;
+  @include mix.gap-xxl;
+  align-self: center;
+}
+
+.kpi {
+  @include mix.white-background;
+  @include mix.container-border-radius-sm;
+  @include mix.padding;
+  @include mix.row;
+  @include mix.vertical-end;
+  @include mix.gap-xs;
+  @include mix.shadow-1;
+  width: 12rem;
+}
+
+.kpi-info {
+  @include mix.row;
+  @include mix.gap-sm;
+  @include mix.vertical-end;
+  @include mix.horizontal-start;
+  @include mix.fill;
+
+  &__data {
+    @include mix.text-xl;
+    @include mix.medium;
+  }
+
+  &__text {
+    @include mix.grey-color(400);
+  }
+
+  &__analytics {
+    @include mix.column;
+    @include mix.vertical-center;
+    @include mix.center-text;
+  }
+}
+
+.percentage-icon:hover {
+  opacity: 0.7;
+}

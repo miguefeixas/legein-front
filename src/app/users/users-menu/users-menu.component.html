@@ -1,0 +1,58 @@
+@if (user) {
+  <mat-toolbar>
+    <img src="assets/images/logo-black.png" alt="Legein isotype" class="logo--xs"/>
+    <div class="toolbar-buttons">
+      <div class="toolbar-buttons__instance">
+        <a
+          class="toolbar-buttons__instance__text text-sm"
+          routerLink="/users/home"
+          routerLinkActive="toolbar-buttons__instance__text--active"
+          >Inicio</a
+        >
+      </div>
+      <div class="toolbar-buttons__instance">
+        <a
+           class="toolbar-buttons__instance__text text-sm"
+          routerLink="/users/books"
+          routerLinkActive="toolbar-buttons__instance__text--active"
+          >Libros</a
+        >
+      </div>
+      <div class="toolbar-buttons__instance">
+        <a
+          class="toolbar-buttons__instance__text text-sm"
+          routerLink="/users/reviews"
+          routerLinkActive="toolbar-buttons__instance__text--active"
+          >Reseñas</a
+        >
+      </div>
+      <div class="toolbar-buttons__instance">
+        <a
+          class="toolbar-buttons__instance__text text-sm"
+          routerLink="/users/lists"
+          routerLinkActive="toolbar-buttons__instance__text--active"
+          >{{ 'MAINMENU.LISTS' | translate }}</a
+        >
+      </div>
+      <div class="toolbar-buttons__instance">
+        <a
+          class="toolbar-buttons__instance__text text-sm"
+          routerLink="/users/profile"
+          routerLinkActive="toolbar-buttons__instance__text--active"
+          >Mi perfil</a
+        >
+      </div>
+    </div>
+    <div class="row horizontal-end gap-sm settings">
+    <p class="text-sm">{{ user.username }}</p>
+    <ion-icon
+      (click)="logout()"
+      class="icon-sm settings-button settings-button--danger"
+      name="log-out-outline"></ion-icon>
+  </div>
+  </mat-toolbar>
+} @else {
+  <mat-toolbar class="unregistered-menu">
+    <img src="assets/images/logo-black.png" alt="Legein isotype" class="logo"/>
+  </mat-toolbar>
+}

@@ -1,0 +1,14 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.vertical-center;
+  @include mix.column;
+  @include mix.gap-sm;
+  @include mix.primary-background(50);
+  @include mix.padding-lg;
+  height: 100% !important;
+}
+
+h1 {
+  margin-bottom: 1rem !important;
+}

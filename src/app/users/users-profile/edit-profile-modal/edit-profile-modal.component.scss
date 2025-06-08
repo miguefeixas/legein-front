@@ -1,0 +1,22 @@
+@use '../../../../scss/utils/mixins' as mix;
+
+.profile-picture {
+  @include mix.column;
+  @include mix.horizontal-start;
+  @include mix.vertical-center;
+  flex: 1 0 25%;
+}
+
+.profile-data {
+  @include mix.column;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+  flex: 1 0 70%;
+}
+
+.image-preview {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

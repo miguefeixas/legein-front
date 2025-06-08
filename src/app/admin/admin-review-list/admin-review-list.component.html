@@ -1,0 +1,67 @@
+<div class="main-padding column gap-sm">
+  <div class="row gap horizontal-start vertical-center">
+    <h2>{{ 'ADMINREVIEWS.TITLE' | translate }}</h2>
+    <ion-icon name="chatbubbles-outline" class="icon-lg"></ion-icon>
+  </div>
+  <div
+    class="background-white container-border-radius-sm shadow-1 column padding-sm">
+    <div class="row gap-sm">
+      <mat-form-field class="form-input form-input--xl">
+        <mat-label>{{
+          'ADMINREVIEWS.TABLE.FILTERS.USERNAME' | translate
+        }}</mat-label>
+        <input
+          matInput
+          [(ngModel)]="searchUsername"
+          (input)="applyFilter()"
+          aria-label="Search"
+          placeholder="{{
+            'ADMINREVIEWS.TABLE.FILTERS.USERNAME' | translate
+          }}" />
+        <ion-icon
+          (click)="removeContent($event)"
+          [name]="searchUsername !== '' ? 'close-outline' : 'search-outline'"
+          class="icon-md primary-color-500"
+          matSuffix></ion-icon>
+      </mat-form-field>
+      <mat-form-field class="form-input form-input--sm">
+        <mat-select
+          [(value)]="selectedRating"
+          (selectionChange)="applyFilter()"
+          placeholder="{{ 'ADMINREVIEWS.TABLE.FILTERS.RATING' | translate }}">
+          <mat-option [value]="undefined">{{
+            'COMMONTRANSLATIONS.SHOWALL' | translate
+          }}</mat-option>
+          @for (status of ratings; track status) {
+            <mat-option [value]="status">
+              <div class="stars-option">
+                {{ status }}
+                <ion-icon
+                  name="star-outline"
+                  class="icon-sm primary-color-500"></ion-icon>
+              </div>
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-input form-input--sm">
+        <mat-select
+          [(value)]="selectedStatus"
+          (selectionChange)="applyFilter()"
+          placeholder="{{
+            'ADMINREVIEWS.TABLE.FILTERS.REVIEWSTATUS' | translate
+          }}">
+          <mat-option [value]="undefined">{{
+            'COMMONTRANSLATIONS.SHOWALL' | translate
+          }}</mat-option>
+          @for (status of reviewStatuses; track status) {
+            <mat-option [value]="status">
+              {{ 'USERS.TABLE.STATUS.' + status | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <app-review-table [dataSource]="dataSource" />
+  </div>
+</div>

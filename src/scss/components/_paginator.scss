@@ -1,0 +1,43 @@
+@use '../utils/mixins' as mix;
+@use '@angular/material' as mat;
+@use '../palette' as pal;
+
+.mat-mdc-paginator {
+  margin-top: 0.5rem;
+}
+
+.mat-mdc-paginator-range-actions {
+  @include mix.container-border-radius-xs;
+  border: 2px solid mat.m2-get-color-from-palette(pal.$primary-palette, 200);
+  height: 2rem;
+}
+
+.mat-mdc-icon-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  height: 2rem !important;
+  width: 2.5rem !important;
+
+  &:not(:last-of-type) {
+    border-right: 2px solid
+      mat.m2-get-color-from-palette(pal.$grey-palette, 300) !important;
+  }
+
+  &:hover {
+    opacity: 0.7 !important;
+  }
+}
+
+mat-paginator .mat-tooltip {
+  display: none !important;
+}
+
+.mat-mdc-button-persistent-ripple.mdc-icon-button__ripple,
+.mat-mdc-button-touch-target,
+.mat-ripple.mat-mdc-button-ripple,
+.mat-mdc-paginator-range-label {
+  display: none !important;
+}

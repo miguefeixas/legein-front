@@ -1,0 +1,57 @@
+@use '../../../scss/utils/mixins' as mix;
+@use '../../../scss/palette' as pal;
+@use '@angular/material' as mat;
+
+.mat-toolbar {
+  @include mix.grey-background(100);
+  @include mix.horizontal-space-between;
+}
+
+.toolbar-buttons {
+  @include mix.row;
+  @include mix.center;
+  height: 100%;
+  width: 70%;
+
+  &__instance {
+    @include mix.center;
+    @include mix.fill-vertical-horizontal;
+    padding-inline: 1rem;
+    width: fit-content;
+
+    &__text {
+      @include mix.grey-color(400);
+
+      &--active {
+        @include mix.primary-color(600);
+      }
+
+      &:hover {
+        @include mix.grey-color(500);
+      }
+    }
+  }
+}
+
+.settings,
+.logo {
+  width: 15%;
+}
+
+.settings-button {
+  @include mix.grey-color(500);
+
+  &:hover {
+    @include mix.grey-color(800);
+    cursor: pointer;
+  }
+
+  &--danger {
+    @include mix.error-color(600);
+
+    &:hover {
+      @include mix.error-color(300);
+      cursor: pointer;
+    }
+  }
+}

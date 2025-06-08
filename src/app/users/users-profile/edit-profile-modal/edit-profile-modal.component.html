@@ -1,0 +1,153 @@
+<h2>Editar perfil</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="profileForm">
+    <div class="row gap-sm fill-vertical-horizontal center">
+      <div class="profile-picture">
+        <div
+          [ngClass]="selectedFile ? 'drag-drop-area--selected' : ''"
+          class="drag-drop-area">
+          @if (selectedFile) {
+            <div class="column center gap fill-vertical-horizontal">
+              <img [src]="previewUrl" alt="Image Preview" class="image-preview" />
+              <div class="column gap-sm center">
+                <a
+                  (click)="removeFile($event)"
+                  class="text-button text-button--danger"
+                  >Eliminar foto de perfil</a>
+                <a class="text-button" (click)="onDragDropClick()">Modificar foto de perfil</a>
+              </div>
+            </div>
+          } @else if (previewUrl) {
+            <img [src]="previewUrl" alt="Image Preview" class="image-preview" />
+            @if (user?.profilePicture) {
+              <a class="text-button" (click)="onDragDropClick()">Modificar foto de perfil</a>
+              <a
+                  (click)="removeFile($event)"
+                  class="text-button text-button--danger"
+                  ><ion-icon class="icon-md" name="trash-outline"></ion-icon
+                ></a>
+            } @else {
+              <a class="text-button" (click)="onDragDropClick()">Subir foto de perfil</a>
+            }
+          } @else {
+            <div class="column gap-sm center">
+              <ion-icon class="icon-xl" name="image-outline"></ion-icon>
+              <p>{{ 'ADDBOOKMODAL.FORM.PLACEHOLDERS.COVER' | translate }}</p>
+              <span class="text-sm grey-color-400">{{
+                'ADDBOOKMODAL.FORM.PLACEHOLDERS.ALLOWEDFORMATS' | translate
+              }}</span>
+              <span class="text-sm grey-color-400">{{
+                'ADDBOOKMODAL.FORM.PLACEHOLDERS.MAXFILESIZE' | translate
+              }}</span>
+            </div>
+          }
+          <input
+            type="file"
+            (change)="onFileSelected($event)"
+            hidden
+            #fileInput
+            accept=".jpg,.jpeg,.png"
+            aria-label="Cover image" />
+        </div>
+      </div>
+      <div class="profile-data">
+        <div class="row horizontal-start gap-sm">
+          <div class="column gap-sm">
+            <mat-label>Nombre</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Nombre"
+                aria-label="Nombre" />
+              @if (profileForm.get('name')?.hasError('required')) {
+                <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="column gap-sm">
+            <mat-label>Primer apellido</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input
+                matInput
+                formControlName="firstLastName"
+                placeholder="Primer apellido"
+                aria-label="ISBN" />
+              @if (profileForm.get('firstLastName')?.hasError('required')) {
+                <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row horizontal-start gap-sm">
+          <div class="column gap-sm">
+            <mat-label>Segundo apellido</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input
+                matInput
+                formControlName="secondLastName"
+                placeholder="Segundo apellido"
+                aria-label="ISBN" />
+            </mat-form-field>
+          </div>
+          <div class="column gap-sm">
+            <mat-label>Email</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Email"
+                aria-label="email" />
+              @if (profileForm.get('email')?.hasError('required')) {
+                <mat-error>{{
+                    'COMMONTRANSLATIONS.REQUIRED' | translate
+                  }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row horizontal-start gap-sm">
+          <div class="column gap-sm">
+            <mat-label>Teléfono</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input
+                matInput
+                formControlName="phoneNumber"
+                placeholder="Teléfono"
+                aria-label="Phone number" />
+            </mat-form-field>
+          </div>
+          <div class="column gap-sm">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <mat-form-field class="form-input form-input--lg">
+              <input matInput formControlName="dateOfBirth" required [matDatepicker]="picker" [matDatepickerFilter]="dateFilter"  placeholder="{{ 'SIGNUP.PLACEHOLDERS.DATEOFBIRTH' | translate }}">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"><ion-icon class="icon-md accent-color-500" name="calendar-outline" matDatepickerToggleIcon></ion-icon></mat-datepicker-toggle>
+              <mat-datepicker [startAt]="startDate()" #picker></mat-datepicker>
+              @if (profileForm.get('dateOfBirth')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <a class="text-button text-button--grey" (click)="closeModal()">{{
+    'COMMONTRANSLATIONS.DISCARD' | translate
+  }}</a>
+  <button
+    mat-button
+    class="button button--primary"
+    type="submit"
+    (click)="onSubmit()">
+    {{ 'COMMONTRANSLATIONS.SAVE' | translate }}
+    <ion-icon name="save-outline" class="icon-sm"></ion-icon>
+  </button>
+</mat-dialog-actions>

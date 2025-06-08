@@ -1,0 +1,50 @@
+<mat-toolbar>
+  <div class="logo">
+    <h1>Legein</h1>
+  </div>
+  <div class="toolbar-buttons">
+    <div class="toolbar-buttons__instance">
+      <a
+        class="toolbar-buttons__instance__text text-sm"
+        routerLink="/admin/home"
+        routerLinkActive="toolbar-buttons__instance__text--active"
+        >{{ 'ADMINMENU.HOME' | translate }}</a
+      >
+    </div>
+    <div class="toolbar-buttons__instance">
+      <a
+        class="toolbar-buttons__instance__text text-sm"
+        routerLink="/admin/users"
+        routerLinkActive="toolbar-buttons__instance__text--active"
+        >{{ 'ADMINMENU.USERS' | translate }}</a
+      >
+    </div>
+    <div class="toolbar-buttons__instance">
+      <a
+        class="toolbar-buttons__instance__text text-sm"
+        routerLink="/admin/books"
+        routerLinkActive="toolbar-buttons__instance__text--active"
+        >{{ 'ADMINMENU.BOOKS' | translate }}</a
+      >
+    </div>
+    <div class="toolbar-buttons__instance">
+      <a
+        class="toolbar-buttons__instance__text text-sm"
+        routerLink="/admin/reviews"
+        routerLinkActive="toolbar-buttons__instance__text--active"
+        >{{ 'ADMINMENU.REVIEWS' | translate }}</a
+      >
+    </div>
+  </div>
+  <div class="row horizontal-end gap-sm settings">
+    <p class="text-sm">{{ user?.username }}</p>
+    <ion-icon
+      [routerLink]="'profile'"
+      class="icon-sm settings-button"
+      name="cog-outline"></ion-icon>
+    <ion-icon
+      (click)="logout()"
+      class="icon-sm settings-button settings-button--danger"
+      name="log-out-outline"></ion-icon>
+  </div>
+</mat-toolbar>

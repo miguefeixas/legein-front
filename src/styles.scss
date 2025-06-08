@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use 'scss/palette' as pal;
+@use '../node_modules/@angular/material/index' as mat;
+@use 'scss/utils/mixins' as mix;
+@use 'scss/theme';
+
+@import 'scss/components/buttons';
+@import 'scss/components/displays';
+@import 'scss/components/fonts';
+@import 'scss/components/forms';
+@import 'scss/components/tables';
+@import 'scss/components/paginator';
+@import 'scss/components/modals';
+
+body {
+  height: 100vh !important;
+  margin: 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.NgxEditor {
+  @include mix.container-border-radius-xs;
+  border: none !important;
+  background-color: mat.m2-get-color-from-palette(
+    pal.$grey-palette,
+    50
+  ) !important;
+}

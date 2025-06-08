@@ -1,0 +1,11 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.white-background;
+  @include mix.shadow-1;
+  @include mix.column;
+  @include mix.vertical-center;
+  @include mix.horizontal-start;
+  @include mix.container-border-radius-xs;
+  width: 40rem;
+}

@@ -1,0 +1,154 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/**
+  * Base colors
+  */
+
+$black: #000000;
+$white: #ffffff;
+
+/**
+  * Primary palette
+  */
+$primary-palette: (
+  50: #e7f5f5,
+  100: #c4e7e5,
+  200: #9dd7d4,
+  300: #75c7c3,
+  400: #58bbb6,
+  500: #3aafa9,
+  600: #34a8a2,
+  700: #2c9f98,
+  800: #25968f,
+  900: #18867e,
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+    A100: $black,
+    A200: $white,
+    A400: $white,
+    A700: $white,
+  ),
+);
+
+/**
+  * Accent palette
+  */
+$accent-palette: (
+  50: #e4e6e7,
+  100: #bbc2c4,
+  200: #8e999d,
+  300: #607075,
+  400: #3e5158,
+  500: #1c323a,
+  600: #192d34,
+  700: #14262c,
+  800: #111f25,
+  900: #091318,
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+    A100: $black,
+    A200: $white,
+    A400: $white,
+    A700: $white,
+  ),
+);
+
+/**
+  * Warn palette
+  */
+$error-palette: (
+  100: #ffc7cc,
+  300: #f26260,
+  500: #ff0c0c,
+  600: #f10011,
+  700: #df000c,
+  800: #d30002,
+  900: #ad0002,
+  contrast: (
+    100: $black,
+    300: $black,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+  ),
+);
+
+$pending-palette: (
+  200: #fff6c7,
+  300: #fff75e,
+  500: #ffe94e,
+  600: #ffda3d,
+  700: #fdc43f,
+  800: #fdb833,
+  contrast: (
+    200: $black,
+    300: $black,
+    500: $black,
+    600: $black,
+    700: $black,
+    800: $black,
+  ),
+);
+
+$success-palette: (
+  200: #d5fcc7,
+  500: #04b800,
+  700: #04b800,
+  contrast: (
+    200: $black,
+    500: $black,
+    700: $black,
+  ),
+);
+
+$grey-palette: (
+  50: #fcfcfc,
+  100: #f8f8f8,
+  200: #f3f3f3,
+  300: #e9e9e9,
+  400: #b4b4b4,
+  500: #5c5c5c,
+  700: #333333,
+  800: #252525,
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$app-primary: mat.m2-define-palette($primary-palette, 500, 100, 800);
+$app-accent: mat.m2-define-palette($accent-palette, 500, 300, 900);
+$app-error: mat.m2-define-palette($error-palette, 500, 100, 600);
+$app-success: mat.m2-define-palette($success-palette, 500, 200, 700);
+$app-warn: mat.m2-define-palette($pending-palette, 500, 200, 700);
+$app-grey: mat.m2-define-palette($grey-palette, 500, 300, 800);

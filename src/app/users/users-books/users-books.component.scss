@@ -1,0 +1,33 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.books {
+  @include mix.row;
+  @include mix.gap;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+
+  flex-wrap: wrap;
+}
+
+.book-cover {
+  max-width: 10rem;
+  height: 15.125rem;
+  object-fit: cover;
+}
+
+.book {
+  max-width: 10rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.filters {
+  @include mix.row;
+  @include mix.gap;
+  @include mix.horizontal-start;
+  @include mix.vertical-center;
+}

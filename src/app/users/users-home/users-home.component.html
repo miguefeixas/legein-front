@@ -1,0 +1,53 @@
+<div class="column">
+  <div class="call-to-action">
+    <div class="claim">
+      <h2>{{ 'LANDING.TITLE' | translate }}</h2>
+      <h3>{{ 'LANDING.SUBTITLE' | translate }}</h3>
+    </div>
+    <div class="auth">
+      <button mat-button class="button button--primary auth__button" routerLink="/login">{{ 'COMMONTRANSLATIONS.LOGIN' | translate }}</button>
+      <button mat-button class="button button--secondary auth__button" routerLink="/signup">{{ 'COMMONTRANSLATIONS.REGISTER' | translate }}</button>
+    </div>
+  </div>
+  <div class="recommendation">
+    <div class="book toptext">
+      <p class="accent-color-800 semi-bold text-xl">{{ 'LANDING.ARECOMMENDATION' | translate }}</p>
+      <div class="book-data">
+        <img class="book__cover" src="{{ book?.cover }}" alt="{{ book?.title }} cover"/>
+        <div class="column gap-xs">
+          <p class="accent-color-800 semi-bold text-lg">{{ book?.title }}</p>
+          @for (author of book?.authors; track author) {
+            <p class="accent-color-800 semi-bold text-md">{{ author.fullName }}</p>
+          }
+          <div class="row gap-xs horizontal-start vertical-center">
+            <p class="accent-color-800 semi-bold text-md">{{ 'GENRES.' + book?.genres?.[0]?.name | translate }}</p>
+            @if (numberOfGenres > 1) {
+              <p class="accent-color-800 semi-bold text-md">-</p>
+              <p class="accent-color-800 semi-bold text-md">{{ 'GENRES.' + book?.genres?.[1]?.name | translate }}</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews toptext">
+      <p class="primary-color-200 semi-bold text-xl">{{ 'LANDING.USERSREVIEWS' | translate }}</p>
+      @for (review of reviews; track review) {
+        <div class="review">
+          <p>
+            "{{ review.content | textLimit: 300 }}"
+          </p>
+          <div class="review__data">
+            <div class="row center gap-xs">
+              <p class="semi-bold">{{ review.rating }} / 5</p> <ion-icon class="primary-color-500" name="star-outline"></ion-icon>
+            </div>
+            <div class="row center gap-xs">
+              <p class="accent-color-800 semi-bold text-md">{{ review.user.username }}</p>
+              <p>-</p>
+              <p class="accent-color-800 semi-bold text-md">{{ review.createdAt | date: 'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

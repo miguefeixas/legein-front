@@ -1,0 +1,12 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  min-height: 10rem !important;
+}
+
+.links {
+  @include mix.row;
+  @include mix.gap;
+  @include mix.vertical-center;
+  margin-right: 3rem;
+}

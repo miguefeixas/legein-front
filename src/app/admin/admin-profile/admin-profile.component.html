@@ -1,0 +1,296 @@
+<div class="profile-data">
+  <div class="section-header">
+    <h2>{{ 'ADMINPROFILE.TITLE' | translate }}</h2>
+    @if (!editing && !password) {
+      <div class="row horizontal-end gap-xs">
+        <button
+          mat-button
+          (click)="changePassword()"
+          class="button button--secondary button--lg">
+          {{ 'ADMINPROFILE.PASSWORDEDIT' | translate }}
+          <ion-icon name="lock-closed-outline" class="icon-sm"></ion-icon>
+        </button>
+        <button
+          mat-button
+          (click)="changeEditing()"
+          class="button button--primary button--lg">
+          {{ 'ADMINPROFILE.EDIT' | translate }}
+          <ion-icon name="create-outline" class="icon-sm"></ion-icon>
+        </button>
+      </div>
+    }
+  </div>
+  @if (!editing && !password) {
+    <div class="column gap-sm horizontal-center">
+      <div class="profile-data__instance">
+        <span class="title">{{ 'ADMINPROFILE.FIELDS.NAME' | translate }}</span>
+        @if (user?.name) {
+          <p class="data">{{ user?.name }}</p>
+        } @else {
+          <p class="data data--unavailable">
+            {{ 'COMMONTRANSLATIONS.NOTAVAILABLE' | translate }}
+          </p>
+        }
+      </div>
+      <div class="profile-data__instance">
+        <span class="title">{{
+          'ADMINPROFILE.FIELDS.FIRSTLASTNAME' | translate
+        }}</span>
+        @if (user?.firstLastName) {
+          <p class="data">{{ user?.firstLastName }}</p>
+        } @else {
+          <p class="data data--unavailable">
+            {{ 'COMMONTRANSLATIONS.NOTAVAILABLE' | translate }}
+          </p>
+        }
+      </div>
+      <div class="profile-data__instance">
+        <span class="title">{{
+          'ADMINPROFILE.FIELDS.SECONDLASTNAME' | translate
+        }}</span>
+        @if (user?.secondLastName) {
+          <p class="data">{{ user?.secondLastName }}</p>
+        } @else {
+          <p class="data data--unavailable">
+            {{ 'COMMONTRANSLATIONS.NOTAVAILABLE' | translate }}
+          </p>
+        }
+      </div>
+      <div class="profile-data__instance">
+        <span class="title">{{ 'ADMINPROFILE.FIELDS.EMAIL' | translate }}</span>
+        @if (user?.email) {
+          <p class="data">{{ user?.email }}</p>
+        } @else {
+          <p class="data data--unavailable">
+            {{ 'COMMONTRANSLATIONS.NOTAVAILABLE' | translate }}
+          </p>
+        }
+      </div>
+      <div class="profile-data__instance">
+        <span class="title">{{
+          'ADMINPROFILE.FIELDS.USERNAME' | translate
+        }}</span>
+        @if (user?.username) {
+          <p class="data">{{ user?.username }}</p>
+        } @else {
+          <p class="data data--unavailable">
+            {{ 'COMMONTRANSLATIONS.NOTAVAILABLE' | translate }}
+          </p>
+        }
+      </div>
+    </div>
+  } @else if (editing) {
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="column gap-sm">
+        <mat-label>{{ 'ADMINPROFILE.FIELDS.NAME' | translate }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="name"
+            placeholder="{{ 'ADMINPROFILE.FIELDS.NAME' | translate }}" />
+          @if (profileForm.get('name')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{
+          'ADMINPROFILE.FIELDS.FIRSTLASTNAME' | translate
+        }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="firstLastName"
+            placeholder="{{
+              'ADMINPROFILE.FIELDS.FIRSTLASTNAME' | translate
+            }}" />
+          @if (profileForm.get('firstLastName')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{
+          'ADMINPROFILE.FIELDS.SECONDLASTNAME' | translate
+        }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="secondLastName"
+            placeholder="{{
+              'ADMINPROFILE.FIELDS.SECONDLASTNAME' | translate
+            }}" />
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{ 'ADMINPROFILE.FIELDS.EMAIL' | translate }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="email"
+            type="email"
+            placeholder="{{ 'ADMINPROFILE.FIELDS.EMAIL' | translate }}" />
+          @if (profileForm.get('email')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+          @if (profileForm.get('email')?.hasError('email')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.INVALIDEMAIL' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{ 'ADMINPROFILE.FIELDS.USERNAME' | translate }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="username"
+            placeholder="{{ 'ADMINPROFILE.FIELDS.USERNAME' | translate }}" />
+          @if (profileForm.get('username')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="profile-data__instance horizontal-end">
+        <a (click)="changeEditing()" class="text-button text-button--danger">
+          {{ 'COMMONTRANSLATIONS.DISCARD' | translate }}
+          <ion-icon name="trash-outline" class="icon-sm"></ion-icon>
+        </a>
+        <button
+          mat-button
+          type="submit"
+          class="button button--primary button--lg"
+          [disabled]="!profileForm.valid || !profileForm.dirty">
+          {{ 'COMMONTRANSLATIONS.SAVE' | translate }}
+          <ion-icon name="save-outline" class="icon-sm"></ion-icon>
+        </button>
+      </div>
+    </form>
+  } @else if (password) {
+    <p [innerHTML]="'ADMINPROFILE.PASSWORD.DISCLAIMER' | translate"></p>
+    <form
+      [formGroup]="passwordForm"
+      (ngSubmit)="onSubmitPassword()"
+      class="column gap-sm">
+      <div class="column gap-sm">
+        <mat-label>{{
+          'ADMINPROFILE.PASSWORD.LABELS.CURRENTPASSWORD' | translate
+        }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="currentPassword"
+            [type]="currentPasswordVisible ? 'text' : 'password'"
+            placeholder="{{
+              'ADMINPROFILE.PASSWORD.PLACEHOLDERS.CURRENTPASSWORD' | translate
+            }}" />
+          <ion-icon
+            matSuffix
+            (click)="changeVisibility($event, 'currentPassword')"
+            name="{{
+              currentPasswordVisible ? 'eye-off-outline' : 'eye-outline'
+            }}"
+            class="icon-md grey-color-400"></ion-icon>
+          @if (passwordForm.get('currentPassword')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{
+          'ADMINPROFILE.PASSWORD.LABELS.NEWPASSWORD' | translate
+        }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="password"
+            [type]="passwordVisible ? 'text' : 'password'"
+            placeholder="{{
+              'ADMINPROFILE.PASSWORD.PLACEHOLDERS.NEWPASSWORD' | translate
+            }}" />
+          <ion-icon
+            matSuffix
+            (click)="changeVisibility($event, 'password')"
+            name="{{ passwordVisible ? 'eye-off-outline' : 'eye-outline' }}"
+            class="icon-md grey-color-400"></ion-icon>
+          @if (passwordForm.get('password')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+          @if (passwordForm.get('password')?.hasError('strongPassword')) {
+            <mat-error>{{
+              'ADMINPROFILE.PASSWORD.NOTSTRONG' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="column gap-sm">
+        <mat-label>{{
+          'ADMINPROFILE.PASSWORD.LABELS.CONFIRMPASSWORD' | translate
+        }}</mat-label>
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            formControlName="passwordConfirmation"
+            [type]="passwordConfirmationVisible ? 'text' : 'password'"
+            placeholder="{{
+              'ADMINPROFILE.PASSWORD.PLACEHOLDERS.CONFIRMPASSWORD' | translate
+            }}" />
+          <ion-icon
+            matSuffix
+            (click)="changeVisibility($event, 'passwordConfirmation')"
+            name="{{
+              passwordConfirmationVisible ? 'eye-off-outline' : 'eye-outline'
+            }}"
+            class="icon-md grey-color-400"></ion-icon>
+          @if (passwordForm.get('passwordConfirmation')?.hasError('required')) {
+            <mat-error>{{
+              'COMMONTRANSLATIONS.REQUIRED' | translate
+            }}</mat-error>
+          }
+          @if (
+            passwordForm.get('passwordConfirmation')?.hasError('strongPassword')
+          ) {
+            <mat-error>{{
+              'ADMINPROFILE.PASSWORD.NOTSTRONG' | translate
+            }}</mat-error>
+          }
+        </mat-form-field>
+        @if (
+          passwordForm.hasError('passwordsMismatch') &&
+          passwordForm.get('passwordConfirmation')?.touched
+        ) {
+          <mat-error>{{
+            'ADMINPROFILE.PASSWORD.NOTMATCH' | translate
+          }}</mat-error>
+        }
+      </div>
+      <div class="profile-data__instance horizontal-end">
+        <a (click)="changePassword()" class="text-button text-button--danger">
+          {{ 'COMMONTRANSLATIONS.DISCARD' | translate }}
+          <ion-icon name="trash-outline" class="icon-sm"></ion-icon>
+        </a>
+        <button
+          mat-button
+          type="submit"
+          class="button button--primary button--lg"
+          [disabled]="!passwordForm.dirty">
+          {{ 'COMMONTRANSLATIONS.SAVE' | translate }}
+          <ion-icon name="save-outline" class="icon-sm"></ion-icon>
+        </button>
+      </div>
+    </form>
+  }
+</div>

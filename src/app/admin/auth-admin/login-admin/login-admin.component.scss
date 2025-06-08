@@ -1,0 +1,29 @@
+@use '../../../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.column;
+  @include mix.container-border-radius-sm;
+  @include mix.gap-sm;
+  @include mix.horizontal-space-between;
+  @include mix.main-padding(1rem, 2rem);
+  @include mix.vertical-center;
+  @include mix.white-background;
+
+  width: 30rem !important;
+}
+
+.redirect-client {
+  @include mix.disabled;
+  align-self: flex-end;
+}
+
+.login-form {
+  @include mix.column;
+  @include mix.gap;
+  @include mix.vertical-center;
+  width: max-content;
+}
+
+.pass {
+  font-size: 2rem;
+}

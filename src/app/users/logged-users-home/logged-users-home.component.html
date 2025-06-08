@@ -1,0 +1,32 @@
+<div class="main-padding row gap-xxl">
+  <div class="book-of-the-day">
+    <h2>El libro del día</h2>
+    <div>
+      <h3>{{ bookOfTheDay?.title }}</h3>
+      <p>{{ bookOfTheDay?.authors?.[0]?.fullName }}</p>
+    </div>
+    <img (click)="goToBookOfTheDay()" class="book-cover" [src]="bookOfTheDay?.cover" alt="Book cover"/>
+  </div>
+  <div class="latest-reviews">
+    <h2>Últimas reseñas de tus amigos</h2>
+    @for (review of friendsReviews; track review; let i = $index) {
+      @if (i < 2) {
+        <div class="column gap-sm">
+          <div class="row horizontal-start gap">
+            <div class="row gap-sm">
+              <p class="semi-bold">Libro:</p>
+              <p>{{review.book.title}}</p>
+            </div>
+            <p class="primary-color-700">&#64;{{review.user.username}}</p>
+            <p>{{review.createdAt | date: 'dd/MM/yyyy'}}</p>
+          </div>
+          <div class="row horizontal-space-between">
+            <p class="semi-bold">{{review.title}}</p>
+            <p>{{review.rating}}/5 <ion-icon class="primary-color-700" name="star-outline"></ion-icon></p>
+          </div>
+          <p>{{review.content}}</p>
+        </div>
+      }
+    }
+  </div>
+</div>

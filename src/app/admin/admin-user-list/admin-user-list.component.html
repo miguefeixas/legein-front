@@ -1,0 +1,56 @@
+<div class="main-padding column gap-sm">
+  <div class="row gap horizontal-start vertical-center">
+    <h2>{{ 'ADMINUSERS.TITLE' | translate }}</h2>
+    <ion-icon name="people-outline" class="icon-lg"></ion-icon>
+  </div>
+  <div
+    class="background-white container-border-radius-sm shadow-1 column padding-sm">
+    <div class="row gap-sm">
+      <mat-form-field class="form-input form-input--xl">
+        <mat-label>{{ 'USERS.TABLE.FILTERS.USERNAME' | translate }}</mat-label>
+        <input
+          matInput
+          [(ngModel)]="searchUsername"
+          (input)="applyFilter()"
+          aria-label="Search"
+          placeholder="{{ 'USERS.TABLE.FILTERS.USERNAME' | translate }}" />
+        <ion-icon
+          (click)="removeContent($event)"
+          [name]="searchUsername !== '' ? 'close-outline' : 'search-outline'"
+          class="icon-md primary-color-500"
+          matSuffix></ion-icon>
+      </mat-form-field>
+      <mat-form-field class="form-input form-input--sm">
+        <mat-select
+          [(value)]="selectedRole"
+          (selectionChange)="applyFilter()"
+          placeholder="{{ 'USERS.TABLE.FILTERS.USERROLE' | translate }}">
+          <mat-option [value]="undefined">
+            {{ 'COMMONTRANSLATIONS.SHOWALL' | translate }}
+          </mat-option>
+          @for (role of userRoles; track role) {
+            <mat-option [value]="role">
+              {{ 'COMMONTRANSLATIONS.USERROLE.' + role | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-input form-input--sm">
+        <mat-select
+          [(value)]="selectedStatus"
+          (selectionChange)="applyFilter()"
+          placeholder="{{ 'USERS.TABLE.FILTERS.USERSTATUS' | translate }}">
+          <mat-option [value]="undefined">{{
+            'COMMONTRANSLATIONS.SHOWALL' | translate
+          }}</mat-option>
+          @for (status of userStatuses; track status) {
+            <mat-option [value]="status">
+              {{ 'USERS.TABLE.STATUS.' + status | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <app-users-table [dataSource]="dataSource" />
+  </div>
+</div>

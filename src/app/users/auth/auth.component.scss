@@ -1,0 +1,8 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.center;
+  height: 100vh;
+  background-image: url('src/assets/images/cover.png');
+  background-size: cover;
+}

@@ -1,0 +1,23 @@
+@use '../../../../scss/utils/mixins' as mix;
+
+.info-card {
+  @include mix.padding;
+  @include mix.column;
+  @include mix.container-border-radius-sm;
+  @include mix.shadow-1;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+  @include mix.gap;
+  width: 100%;
+  max-width: 33%;
+  height: 10rem;
+}
+
+.kpi-text {
+  @include mix.text-xl;
+  @include mix.medium;
+}
+
+.reviews-button {
+  align-self: flex-end;
+}

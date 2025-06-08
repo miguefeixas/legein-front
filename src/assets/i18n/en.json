@@ -1,0 +1,296 @@
+{
+  "COMMONTRANSLATIONS": {
+    "BOOKSTATUS": {
+      "PENDING": "Pending",
+      "ACTIVE": "Active",
+      "REJECTED": "Rejected",
+      "DELETED": "Deleted"
+    },
+    "USERROLE": {
+      "ADMIN": "Administrator",
+      "USER": "User",
+      "AUTHOR": "Author"
+    },
+    "REQUIRED": "This field is required",
+    "INVALIDEMAIL": "The email address is not valid",
+    "LOGIN": "Log in",
+    "DETAILS": "Details",
+    "SAVE": "Save",
+    "DISCARD": "Discard",
+    "NOTAVAILABLE": "Not available",
+    "SHOWALL": "Show all",
+    "CLOSE": "Close",
+    "AND": "and",
+    "EDIT": "Edit",
+    "REGISTER": "Sign up",
+    "BACK": "Back"
+  },
+  "API": {
+    "ERROR": {
+      "WRONGPASSWORD": "The current password is incorrect",
+      "ALREADYEXISTSEMAIL": "The email is already in use",
+      "ALREADYEXISTSUSERNAME": "Someone beat you to the punch with that username 😅"
+    }
+  },
+  "GENRES": {
+    "ART": "Art",
+    "BIOGRAPHY": "Biography",
+    "CLASSICS": "Classics",
+    "COOKING": "Cooking",
+    "ESSAY": "Essay",
+    "FANTASY": "Fantasy",
+    "HORROR": "Horror",
+    "MUSIC": "Music",
+    "MYSTERY": "Mystery",
+    "PHOTOGRAPHY": "Photography",
+    "SELFHELP": "Self-help",
+    "THRILLER": "Thriller",
+    "PHILOSOPHY": "Philosophy",
+    "SPANISHFICTION": "Spanish fiction"
+  },
+  "ADMINLOGIN": {
+    "TITLE": "Login",
+    "SUBTITLE": "to start managing Legein",
+    "REDIRECTCLIENT": "Are you a user?",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "TITLELOGINERROR": "Incorrect email or password",
+    "MESSAGELOGINERROR": "Error logging in"
+  },
+  "ADMINMENU": {
+    "HOME": "Home",
+    "USERS": "Users",
+    "BOOKS": "Books",
+    "REVIEWS": "Reviews"
+  },
+  "ADMINHOME": {
+    "KPIS": {
+      "REGISTERCOUNT": "new users",
+      "BOOKSADDED": "books added",
+      "REVIEWSCOUNT": "new reviews",
+      "EMERGINGAUTHORSCOUNTS": "new emerging authors",
+      "PERCENTAGERISE": "A {{percentage}}% more than last week",
+      "PERCENTAGEFALL": "{{percentage}}% less than last week",
+      "PERCENTAGEEQUAL": "Same as last week"
+    },
+    "TITLE": "Hi, {{name}}!",
+    "SUBTITLE": "This week in Legein...",
+    "PENDINGBOOKS": "Books pending approval"
+  },
+  "BOOKS": {
+    "TABLE": {
+      "HEADER": {
+        "TITLE": "Title",
+        "ID": "ID",
+        "ISBN": "ISBN",
+        "STATUS": "Status",
+        "PAGES": "Pages",
+        "PUBLISHER": "Publisher",
+        "PUBLICATIONYEAR": "Publication year"
+      },
+      "ACTIONS": {
+        "APPROVE": "Approve",
+        "REJECT": "Reject"
+      },
+      "FILTERS": {
+        "BOOKSTATUS": "Status",
+        "TITLE": "Search by title or ISBN",
+        "BOOKPAGES": "Pages"
+      },
+      "STATUS": {
+        "PENDING": "Pending",
+        "ACTIVE": "Active",
+        "REJECTED": "Rejected",
+        "DELETED": "Deleted"
+      }
+    }
+  },
+  "ADMINPROFILE": {
+    "FIELDS": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "USERNAME": "Username",
+      "FIRSTLASTNAME": "First lastname",
+      "SECONDLASTNAME": "Second lastname"
+    },
+    "PASSWORD": {
+      "PLACEHOLDERS": {
+        "CURRENTPASSWORD": "Enter your current password",
+        "NEWPASSWORD": "Enter your new password",
+        "CONFIRMPASSWORD": "Confirm your new password"
+      },
+      "LABELS": {
+        "CURRENTPASSWORD": "Current password",
+        "NEWPASSWORD": "New password",
+        "CONFIRMPASSWORD": "Confirm new password"
+      },
+      "DISCLAIMER": "Remember that your password must have: <ul><li>At least <strong>8 characters</strong></li><li>At least <strong>one uppercase letter</strong></li><li>At least <strong>one lowercase letter</strong></li><li>At least <strong>one number</strong></li><li>At least <strong>one special character</strong></li></ul>",
+      "NOTSTRONG": "The password does not meet the minimum requirements",
+      "NOTMATCH": "The passwords do not match"
+    },
+    "TITLE": "My profile",
+    "EDIT": "Edit profile",
+    "PASSWORDEDIT": "Edit password",
+    "SUCCESSPROFILEUPDATE": "Profile updated successfully",
+    "ERRORPROFILEUPDATE": "Error updating profile",
+    "ERRORPASSWORDCHANGE": "Error while changing password"
+  },
+  "ADMINUSERS": {
+    "TITLE": "Users"
+  },
+  "USERS": {
+    "TABLE": {
+      "HEADER": {
+        "ID": "ID",
+        "NAME": "Name",
+        "USERNAME": "User",
+        "REGISTERDATE": "Registration date",
+        "ROLE": "Role",
+        "STATUS": "Status"
+      },
+      "STATUS": {
+        "PENDING": "Pending",
+        "ACTIVE": "Active",
+        "DELETED": "Deleted"
+      },
+      "FILTERS": {
+        "USERROLE": "User role",
+        "USERSTATUS": "User status",
+        "USERNAME": "Search by username"
+      }
+    }
+  },
+  "ADMINBOOKS": {
+    "TITLE": "Books",
+    "ADDBOOK": "Add book"
+  },
+  "ADDBOOKMODAL": {
+    "TITLE": "Add a new book",
+    "UPLOADIMAGE": "Upload image",
+    "SUBTITLEUPLOADIMAGE": "If you don't want to add an image now, you can do it later.",
+    "ADDIMAGE": "Add a cover to the book",
+    "NOTUPLOADIMAGE": "Another time",
+    "CREATEBOOKSUCCESS": "Book created successfully",
+    "FORM": {
+      "LABELS": {
+        "TITLE": "Title",
+        "ISBN": "ISBN",
+        "PUBLISHER": "Publisher",
+        "PAGES": "Pages",
+        "LANGUAGE": "Language",
+        "MAINGENRE": "Main Genre",
+        "SECONDARYGENRE": "Secondary Genre",
+        "AUTHOR": "Author",
+        "OVERVIEW": "Overview",
+        "PUBLICATIONYEAR": "Publication year"
+      },
+      "PLACEHOLDERS": {
+        "TITLE": "Book Title",
+        "ISBN": "97XXXXXXXXXXX",
+        "PUBLISHER": "Book Publisher",
+        "PAGES": "Pages",
+        "LANGUAGE": "Language",
+        "MAINGENRE": "Main Genre of the Book",
+        "SECONDARYGENRE": "Secondary Genre of the Book",
+        "AUTHOR": "Author(s) of the Book",
+        "COVER": "Drag and drop or click to upload the cover page",
+        "OVERVIEW": "Brief summary of the book",
+        "PUBLICATIONYEAR": "E.g. 2024",
+        "ALLOWEDFORMATS": "Allowed formats: jpg, jpeg or png",
+        "MAXFILESIZE": "Maximum size: 10MB"
+      },
+      "ERRORS": {
+        "LANGUAGE": "A language is required",
+        "INVALIDFILEMESSAGE": "The file must be a .jpg, .jpeg or .png",
+        "INVALIDFILETITLE": "Invalid file",
+        "FILETOOLARGEMESSAGE": "The size of the file exceeds the limit of 10MB",
+        "FILETOOLARGETITLE": "File too large",
+        "INVALIDISBN": "The ISBN is not valid",
+        "LENGTHISBN": "The ISBN must be 10 or 13 characters"
+      }
+    },
+    "STEPS": {
+      "FIRST": "Some details about the book...",
+      "SECOND": "Who made it possible?",
+      "THIRD": "What is it about?",
+      "FOURTH": "Add a cover image, and you're done!"
+    }
+  },
+  "ADMINBOOKDETAILS": {
+    "ANDMORE": "and <strong>{{numberOfAuthors}}</strong> more",
+    "COVER": "Cover",
+    "INFORMATION": "Information",
+    "PUBLISHER": "Publisher",
+    "PUBLICATIONYEAR": "Publication year",
+    "MAINGENRE": "Main Genre",
+    "SECONDARYGENRE": "Secondary Genre",
+    "PAGES": "Pages",
+    "ISBN": "ISBN",
+    "STATUS": "Status",
+    "LANGUAGE": "Language",
+    "OVERVIEW": "Overview",
+    "UPDATEDSUCCESS": "Book updated successfully",
+    "UPDATEDERROR": "Error updating book",
+    "EDITSTATUS": "Edit status",
+    "CHANGECOVER": "Change cover image"
+  },
+  "ADMINREVIEWS": {
+    "HEADER": {
+      "ID": "ID",
+      "CONTENT": "Review",
+      "TITLE": "Title",
+      "AUTHOR": "Author",
+      "RATING": "Rating",
+      "STATUS": "Status"
+    },
+    "ACTIONS": {
+      "SEEMORE": "See more",
+      "REACTIVATE": "Reactivate",
+      "DELETE": "Delete"
+    },
+    "FILTERS": {
+      "USERNAME": "Search by username",
+      "RATING": "Rating",
+      "REVIEWSTATUS": "Status"
+    },
+    "TITLE": "Reviews",
+    "SUCCESSREVIEWSTATUS": "Review status updated successfully",
+    "ERRORREVIEWSTATUS": "Error updating review status"
+  },
+  "REVIEWMODAL": {
+    "FIELDS": {
+      "TITLE": "Title",
+      "REVIEW": "Review",
+      "USER": "User",
+      "BOOK": "Book"
+    },
+    "STATUS": {
+      "ACTIVE": "Active",
+      "DELETED": "Deleted"
+    },
+    "TITLE": "Review"
+  },
+  "LANDING": {
+    "TITLE": "An open and global digital library",
+    "SUBTITLE": "Join the community where readers and authors meet to share and discover new works.",
+    "ARECOMENDATION": "A recommendation?",
+    "USERSREVIEWS": "Find out what readers think about this title"
+  },
+  "SIGNUP": {
+    "PLACEHOLDERS": {
+      "NAME": "Name",
+      "LASTNAME": "Last name",
+      "USERNAME": "Username",
+      "DATEOFBIRTH": "Date of birth"
+    },
+    "TITLE": "Sign up",
+    "WELCOME": "Welcome! Tell us a little about yourself...",
+    "IAMAUTHOR": "I'm an author",
+    "IAMREADER": "I'm a reader",
+    "AUTHORREGISTER": "Let's start with your <span class=\"shiny-text\">author</span> profile",
+    "USERREGISTER": "Let's start with your <span class=\"shiny-text\">reader</span> profile",
+    "NOTSTRONGPASS": "The password seems a bit weak, doesn't it?",
+    "TITLEERROR": "Error while signing up",
+    "MESSAGEERROR": "It looks like something went wrong while signing up, please try again"
+  }
+}

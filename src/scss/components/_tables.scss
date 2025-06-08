@@ -1,0 +1,55 @@
+@use '../utils/mixins' as mix;
+@use '@angular/material' as mat;
+@use '../palette' as pal;
+
+.mat-mdc-table {
+  @include mix.container-border-radius-xs;
+  @include mix.shadow-1;
+
+  // Without the following line, the border radius makes no difference
+  overflow: hidden !important;
+}
+
+.table-chip {
+  @include mix.row;
+  @include mix.gap-xs;
+  @include mix.center;
+  @include mix.main-padding(0.1rem, 0.25rem);
+  width: 8rem;
+
+  &--active {
+    @include mix.container-border-radius-xs;
+    border: 1px solid mat.m2-get-color-from-palette(pal.$success-palette, 500);
+    color: mat.m2-get-color-from-palette(pal.$success-palette, 500);
+  }
+
+  &--pending {
+    @include mix.container-border-radius-xs;
+    border: 1px solid mat.m2-get-color-from-palette(pal.$pending-palette, 800);
+    color: mat.m2-get-color-from-palette(pal.$pending-palette, 800);
+  }
+
+  &--rejected {
+    @include mix.container-border-radius-xs;
+    border: 1px solid mat.m2-get-color-from-palette(pal.$error-palette, 500);
+    color: mat.m2-get-color-from-palette(pal.$error-palette, 500);
+  }
+
+  &--deleted {
+    @include mix.container-border-radius-xs;
+    border: 1px solid mat.m2-get-color-from-palette(pal.$grey-palette, 500);
+    color: mat.m2-get-color-from-palette(pal.$grey-palette, 500);
+  }
+
+  &--reduced {
+    width: min-content;
+  }
+}
+
+.options-button {
+  @include mix.row;
+  @include mix.horizontal-space-between;
+  @include mix.vertical-center;
+  @include mix.gap-xs;
+  width: 100% !important;
+}

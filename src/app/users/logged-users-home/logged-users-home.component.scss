@@ -1,0 +1,28 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.book-cover {
+  width: 18rem;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.book-of-the-day {
+  @include mix.column;
+  @include mix.gap-sm;
+  flex: 1 0 20%;
+}
+
+.latest-reviews {
+  @include mix.column;
+  @include mix.gap;
+  flex: 1 0 45%;
+}
+
+.notifications {
+  @include mix.column;
+  @include mix.gap;
+  flex: 1 0 35%;
+}

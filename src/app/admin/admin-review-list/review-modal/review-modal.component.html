@@ -1,0 +1,55 @@
+<div class="row horizontal-space-between vertical-center">
+  <div class="row horizontal-start gap-ml">
+    <h2>
+      {{ 'REVIEWMODAL.TITLE' | translate }}
+      <span class="grey-color-400">#{{ review?.id }}</span>
+    </h2>
+    <div [ngClass]="statusClass" class="row center padding-xs gap-xs">
+      <span>{{ statusTranslation | translate }}</span>
+      <ion-icon [name]="statusIcon" class="icon-sm"></ion-icon>
+    </div>
+  </div>
+  <div class="row horizontal-end gap-sm vertical-center text-xl">
+    <span>{{ review?.rating }}/5</span>
+    <ion-icon name="star-outline" class="primary-color-500 icon-md"></ion-icon>
+  </div>
+</div>
+<mat-dialog-content>
+  <div class="gap-ml column horizontal-start vertical-start">
+    <div class="fill row horizontal-start gap-ml">
+      <div class="row horizontal-start vertical-center gap-xs">
+        <ion-icon
+          name="person-circle-outline"
+          class="icon-sm primary-color-500"></ion-icon>
+        <p>{{ review?.user?.username }}</p>
+      </div>
+      <div class="row horizontal-start vertical-center gap-xs">
+        <ion-icon
+          name="book-outline"
+          class="icon-sm primary-color-500"></ion-icon>
+        <a class="text-button" (click)="redirectToBook()" mat-dialog-close>{{
+          review?.book?.title
+        }}</a>
+      </div>
+    </div>
+    <div class="fill column gap-sm">
+      <div class="column vertical-start horizontal-start gap-xs">
+        <span class="text-xl">{{
+          'REVIEWMODAL.FIELDS.TITLE' | translate
+        }}</span>
+        <p>{{ review?.title }}</p>
+      </div>
+      <div class="column vertical-start horizontal-start gap-xs">
+        <span class="text-xl">{{
+          'REVIEWMODAL.FIELDS.REVIEW' | translate
+        }}</span>
+        <p>{{ review?.content }}</p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <a class="text-button" mat-dialog-close>{{
+    'COMMONTRANSLATIONS.CLOSE' | translate
+  }}</a>
+</mat-dialog-actions>

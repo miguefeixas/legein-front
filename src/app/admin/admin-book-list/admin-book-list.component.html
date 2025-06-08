@@ -1,0 +1,66 @@
+<div class="main-padding column gap-sm">
+  <div class="row gap horizontal-start vertical-center">
+    <h2>{{ 'ADMINBOOKS.TITLE' | translate }}</h2>
+    <ion-icon name="book-outline" class="icon-lg"></ion-icon>
+  </div>
+  <div
+    class="background-white container-border-radius-sm shadow-1 column padding-sm">
+    <div class="row gap-sm horizontal-space-between vertical-center">
+      <div class="row gap-sm">
+        <mat-form-field class="form-input form-input--xl">
+          <input
+            matInput
+            [(ngModel)]="searchTitle"
+            (input)="applyFilter()"
+            placeholder="{{ 'BOOKS.TABLE.FILTERS.TITLE' | translate }}"
+            aria-label="Search" />
+          <ion-icon
+            (click)="removeContent($event)"
+            [name]="searchTitle !== '' ? 'close-outline' : 'search-outline'"
+            class="icon-md primary-color-500"
+            matSuffix></ion-icon>
+        </mat-form-field>
+        <mat-form-field class="form-input form-input--sm">
+          <mat-select
+            [(value)]="selectedPageRange"
+            (selectionChange)="applyFilter()"
+            placeholder="{{ 'BOOKS.TABLE.FILTERS.BOOKPAGES' | translate }}">
+            <mat-option [value]="undefined">{{
+              'COMMONTRANSLATIONS.SHOWALL' | translate
+            }}</mat-option>
+            @for (range of pageRanges; track range) {
+              <mat-option [value]="range">
+                {{ range.label }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-input form-input--sm">
+          <mat-select
+            [(value)]="selectedStatus"
+            (selectionChange)="applyFilter()"
+            placeholder="{{ 'BOOKS.TABLE.FILTERS.BOOKSTATUS' | translate }}">
+            <mat-option [value]="undefined">{{
+              'COMMONTRANSLATIONS.SHOWALL' | translate
+            }}</mat-option>
+            @for (status of bookStatus; track status) {
+              <mat-option [value]="status">
+                {{ 'BOOKS.TABLE.STATUS.' + status | translate }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button
+        mat-button
+        class="button button--primary margin-bottom-error"
+        (click)="openAddBookModal()">
+        {{ 'ADMINBOOKS.ADDBOOK' | translate }}
+        <ion-icon class="icon-sm" name="add-outline"></ion-icon>
+      </button>
+    </div>
+    <app-book-table
+      [dataSource]="dataSource"
+      [columnsToDisplay]="columnsToDisplay" />
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="column horizontal-start vertical-start padding-sm">
+  <div class="row gap horizontal-space-between vertical-center fill">
+    <div class="row gap horizontal-start vertical-center">
+      <ion-icon name="person-outline" class="icon-lg"></ion-icon>
+      <h2 class="bold">{{ userDetail?.fullName }}</h2>
+      <div [ngClass]="getStatusClass(userDetail)" class="table-chip">
+        <ion-icon class="icon-sm" [name]="getStatusIcon(userDetail)"></ion-icon>
+        {{ getStatusTranslationKey(userDetail) | translate }}
+      </div>
+    </div>
+    <div class="column horizontal-start vertical-end gap-sm">
+      @if (userDetail?.disabled) {
+        <button mat-button class="button button--primary" (click)="activateUser()">{{ 'USERDETAILS.ACTIVATE' | translate }}</button>
+        <a class="text-button text-button--danger" (click)="deleteUser()"
+      >{{ 'USERDETAILS.PERMANENTDELETE' | translate
+        }}<ion-icon class="icon-sm" name="trash-outline"></ion-icon
+        ></a>
+      } @else {
+        <a class="text-button text-button--danger" (click)="deactivateUser()"
+      >{{ 'USERDETAILS.DELETE' | translate
+        }}<ion-icon class="icon-sm" name="trash-outline"></ion-icon
+        ></a>
+      }
+    </div>
+  </div>
+  <div class="row horizontal-center vertical-center gap-xl fill padding-sm">
+    <div class="info-card">
+      <h3>{{ 'USERDETAILS.PERSONALDATA' | translate }}</h3>
+      <div class="column horizontal-start vertical-start gap-sm fill">
+        <div class="row horizontal-start vertical-center gap-sm fill">
+          <ion-icon name="mail-outline" class="icon-md primary-color-500"></ion-icon>
+          <div class="row horizontal-space-between fill">
+            <p class="no-margin bold">{{ 'USERDETAILS.EMAIL' | translate }}</p>
+            <p class="no-margin">{{ userDetail?.email || ('COMMONTRANSLATIONS.NOTAVAILABLE' | translate) }}</p>
+          </div>
+        </div>
+        <div class="row horizontal-start vertical-center gap-sm fill">
+          <ion-icon name="call-outline" class="icon-md primary-color-500"></ion-icon>
+          <div class="row horizontal-space-between fill">
+            <p class="no-margin bold">{{ 'USERDETAILS.PHONENUMBER' | translate }}</p>
+            <p class="no-margin">{{ userDetail?.phoneNumber || ('COMMONTRANSLATIONS.NOTAVAILABLE' | translate) }}</p>
+          </div>
+        </div>
+        <div class="row horizontal-start vertical-center gap-sm fill">
+          <ion-icon name="person-circle-outline" class="icon-md primary-color-500"></ion-icon>
+          <div class="row horizontal-space-between fill">
+            <p class="no-margin bold">{{ 'USERDETAILS.USERNAME' | translate }}</p>
+            <p class="no-margin">{{ userDetail?.username || ('COMMONTRANSLATIONS.NOTAVAILABLE' | translate) }}</p>
+          </div>
+        </div>
+        <div class="row horizontal-start vertical-center gap-sm fill">
+          <ion-icon name="calendar-outline" class="icon-md primary-color-500"></ion-icon>
+          <div class="row horizontal-space-between fill">
+            <p class="no-margin bold">{{ 'USERDETAILS.DATEOFBIRTH' | translate }}</p>
+            <p class="no-margin">{{ (userDetail?.dateOfBirth | date: 'dd/MM/yyyy') || ('COMMONTRANSLATIONS.NOTAVAILABLE' | translate) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>{{ 'USERDETAILS.REVIEWS' | translate }}</h3>
+      <p class="kpi-text">{{ reviews.length }}</p>
+      <button [ngClass]="{'disabled': reviews.length === 0}" mat-button class="button button--primary reviews-button" (click)="openReviews()">{{ 'USERDETAILS.SEEREVIEWS' | translate }}</button>
+    </div>
+  </div>
+</div>

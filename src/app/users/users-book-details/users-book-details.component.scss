@@ -1,0 +1,23 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  ::ng-deep {
+    @include mix.main-padding();
+  }
+}
+
+.book-cover {
+  width: 15rem;
+}
+
+.book-overview {
+  width: 50rem;
+}
+
+.book-details {
+  width: 50rem;
+}
+
+.book-reviews {
+  width: 50rem;
+}

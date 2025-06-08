@@ -1,0 +1,110 @@
+<div class="main-padding column horizontal-start gap-lg">
+  <h2
+    class="no-margin"
+    [innerHTML]="'ADMINHOME.TITLE' | translate: { name: user?.username }"></h2>
+  <div class="kpis-container">
+    <h3>{{ 'ADMINHOME.SUBTITLE' | translate }}</h3>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-info">
+          <div class="column horizontal-start fill">
+            <p class="kpi-info__text">
+              {{ 'ADMINHOME.KPIS.REGISTERCOUNT' | translate }}
+            </p>
+            <div class="row horizontal-space-between vertical-end">
+              <span class="kpi-info__data">{{ lastWeekUsers }}</span>
+              <ion-icon
+                [matTooltip]="
+                  lastWeekUsersPercentageKey
+                    | translate
+                      : {
+                          percentage: lastWeekUsersPercentage,
+                        }
+                "
+                [ngClass]="lastWeekUsersClass"
+                class="icon-lg percentage-icon"
+                [name]="lastWeekUsersIcon"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-info">
+          <div class="column horizontal-start fill">
+            <p class="kpi-info__text">
+              {{ 'ADMINHOME.KPIS.BOOKSADDED' | translate }}
+            </p>
+            <div class="row horizontal-space-between vertical-end">
+              <span class="kpi-info__data">{{ lastWeekBooks }}</span>
+              <ion-icon
+                [matTooltip]="
+                  lastWeekBooksPercentageKey
+                    | translate
+                      : {
+                          percentage: lastWeekBooksPercentage,
+                        }
+                "
+                [ngClass]="lastWeekBooksClass"
+                class="icon-lg percentage-icon"
+                [name]="lastWeekBooksIcon"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-info">
+          <div class="column horizontal-start fill">
+            <p class="kpi-info__text">
+              {{ 'ADMINHOME.KPIS.REVIEWSCOUNT' | translate }}
+            </p>
+            <div class="row horizontal-space-between vertical-end">
+              <span class="kpi-info__data">{{ lastWeekReviews }}</span>
+              <ion-icon
+                [matTooltip]="
+                  lastWeekReviewsPercentageKey
+                    | translate
+                      : {
+                          percentage: lastWeekReviewsPercentage,
+                        }
+                "
+                [ngClass]="lastWeekReviewsClass"
+                class="icon-lg percentage-icon"
+                [name]="lastWeekReviewsIcon"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-info">
+          <div class="column horizontal-start fill">
+            <p class="kpi-info__text">
+              {{ 'ADMINHOME.KPIS.EMERGINGAUTHORSCOUNTS' | translate }}
+            </p>
+            <div class="row horizontal-space-between vertical-end">
+              <span class="kpi-info__data">{{ lastWeekEmergingAuthors }}</span>
+              <ion-icon
+                [matTooltip]="
+                  lastWeekEmergingAuthorsPercentageKey
+                    | translate
+                      : {
+                          percentage: lastWeekEmergingAuthorsPercentage,
+                        }
+                "
+                [ngClass]="lastWeekEmergingAuthorsClass"
+                class="icon-lg percentage-icon"
+                [name]="lastWeekEmergingAuthorsIcon"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column gap-sm horizontal-start vertical-start fill">
+    <h3 class="no-margin">{{ 'ADMINHOME.PENDINGBOOKS' | translate }}</h3>
+    <app-book-table
+      class="fill"
+      [columnsToDisplay]="columnsToDisplay"
+      [dataSource]="dataSource"
+      [showPaginator]="false"></app-book-table>
+  </div>
+</div>

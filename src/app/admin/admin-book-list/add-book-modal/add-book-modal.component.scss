@@ -1,0 +1,66 @@
+@use '../../../../scss/utils/mixins' as mix;
+@use '../../../../scss/palette' as pal;
+@use '@angular/material' as mat;
+
+.drag-drop-area {
+  @include mix.container-border-radius-xs;
+  @include mix.padding-sm;
+  @include mix.center;
+
+  border: 2px dashed mat.m2-get-color-from-palette(pal.$primary-palette, 300);
+  text-align: center;
+  cursor: pointer;
+  width: 60%;
+  height: 60%;
+
+  &--selected {
+    border: none;
+  }
+}
+
+.drag-drop-area p {
+  margin: 0;
+}
+
+.file-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-info {
+  text-align: left;
+}
+
+.icon-lg {
+  font-size: 2rem;
+}
+
+.image-preview {
+  height: 25rem;
+  width: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.overview-edit-container {
+  height: 13.3rem;
+  max-height: 13.3rem;
+  width: 37rem;
+
+  &__editor {
+    @include mix.container-border-radius-xs;
+    @include mix.grey-background(50);
+    border: 1px solid mat.m2-get-color-from-palette(pal.$primary-palette, 100);
+    height: 100% !important;
+    overflow-y: auto;
+  }
+
+  &__menu {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}

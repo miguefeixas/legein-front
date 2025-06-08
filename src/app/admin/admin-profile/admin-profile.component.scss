@@ -1,0 +1,51 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  @include mix.main-padding();
+  @include mix.column;
+  @include mix.vertical-center;
+
+  ::ng-deep {
+    ul {
+      margin-top: 0.3rem !important;
+    }
+  }
+}
+
+.section-header {
+  @include mix.row;
+  @include mix.horizontal-space-between;
+  @include mix.vertical-center;
+  @include mix.fill;
+  align-self: start;
+  margin-bottom: 1rem !important;
+}
+
+.profile-data {
+  @include mix.column;
+  @include mix.white-background;
+  @include mix.container-border-radius-sm;
+  @include mix.padding-sm;
+  @include mix.gap-xs;
+  @include mix.shadow-1;
+  width: 40%;
+
+  &__instance {
+    @include mix.row;
+    @include mix.gap-sm;
+  }
+}
+
+.title {
+  @include mix.bold;
+  flex: 1 1 40%;
+}
+
+.data {
+  flex: 1 1 60%;
+
+  &--unavailable {
+    @include mix.grey-color(400);
+    @include mix.italic;
+  }
+}

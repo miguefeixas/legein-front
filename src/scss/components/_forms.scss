@@ -1,0 +1,111 @@
+@use '../utils/mixins' as mix;
+@use '@angular/material' as mat;
+@use '../palette' as pal;
+@use 'sass:map';
+
+$hint-and-error-font-size: 0.75rem;
+
+.mat-mdc-form-field,
+.mat-form-field-appearance-outline {
+  .mat-mdc-text-field-wrapper {
+    border-radius: 8px;
+    background-color: mat.m2-get-color-from-palette(
+      pal.$grey-palette,
+      50
+    ) !important;
+    transition: 0.1s;
+    outline: transparent;
+    outline-offset: -2px;
+    gap: 0.1rem;
+    border: 1px solid mat.m2-get-color-from-palette(pal.$primary-palette, 100) !important;
+  }
+
+  .mat-mdc-form-field-hint-wrapper,
+  .mat-mdc-form-field-error-wrapper {
+    padding: 0;
+  }
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: black;
+}
+
+.mat-focused {
+  .mat-mdc-text-field-wrapper {
+    border: 1px solid mat.m2-get-color-from-palette(pal.$primary-palette, 500) !important;
+    background-color: white !important;
+  }
+}
+
+.mat-form-field-invalid {
+  .mat-mdc-text-field-wrapper {
+    border: 1px solid mat.m2-get-color-from-palette(pal.$error-palette, 500) !important;
+  }
+}
+
+mat-hint {
+  color: mat.m2-get-color-from-palette(pal.$grey-palette, 500) !important;
+  font-size: $hint-and-error-font-size;
+}
+
+mat-error {
+  color: mat.m2-get-color-from-palette(pal.$error-palette, 500) !important;
+  font-size: $hint-and-error-font-size;
+  font-weight: 500;
+}
+
+.form-container {
+  @include mix.column;
+  @include mix.gap;
+  @include mix.center;
+  width: 100% !important;
+}
+
+.form-input {
+  @include mix.column;
+  @include mix.gap-xs;
+  width: 100% !important;
+
+  &--xxs {
+    width: 7.8rem !important;
+  }
+
+  &--xs {
+    width: 10rem !important;
+  }
+
+  &--sm {
+    width: 11.688rem !important;
+  }
+
+  &--md {
+    width: 13.375rem !important;
+  }
+
+  &--lg {
+    width: 18.375rem !important;
+  }
+
+  &--xl {
+    width: 23.375rem !important;
+  }
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: mat.m2-get-color-from-palette(
+    pal.$grey-palette,
+    50
+  ) !important;
+}
+
+.mdc-line-ripple {
+  display: none !important;
+}
+
+.mat-mdc-form-field-icon-suffix {
+  margin-right: 1rem;
+}
+
+textarea {
+  resize: none !important;
+}

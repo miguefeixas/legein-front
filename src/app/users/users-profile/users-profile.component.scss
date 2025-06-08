@@ -1,0 +1,52 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.left-container {
+  flex: 1 0 60%;
+
+  &__unit {
+    min-width: 20rem;
+  }
+}
+
+.right-container {
+  flex: 1 0 40%;
+}
+
+.profile-picture {
+  width: 10rem;
+}
+
+.title {
+  @include mix.bold;
+  flex: 1 1 40%;
+}
+
+.data {
+  flex: 1 1 60%;
+
+  &--unavailable {
+    @include mix.grey-color(400);
+    @include mix.italic;
+  }
+}
+
+.friend-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.see-all-link {
+  align-self: flex-end;
+}
+
+.book-list {
+  @include mix.row;
+  @include mix.horizontal-start;
+  @include mix.vertical-center;
+  @include mix.gap-sm;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}

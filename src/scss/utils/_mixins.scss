@@ -1,0 +1,327 @@
+@use '@angular/material' as mat;
+@use '../palette' as pal;
+
+@mixin stylize-text($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+/***
+  Flex shortcuts
+ */
+@mixin column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin fill() {
+  width: 100%;
+}
+
+@mixin fill-height() {
+  height: 100%;
+}
+
+@mixin fill-vertical-horizontal() {
+  width: 100%;
+  height: 100%;
+}
+
+// Vertical and horizontal centering
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin horizontal-start() {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin horizontal-end() {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin horizontal-space-between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin horizontal-center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin vertical-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin vertical-end() {
+  display: flex;
+  align-items: flex-end;
+}
+
+@mixin vertical-start() {
+  display: flex;
+  align-items: flex-start;
+}
+
+/***
+  Gap shortcuts
+  Used to standardize the use of given gaps in the app according to the standardized design
+ */
+@mixin gap-xxl() {
+  gap: 3.5rem;
+}
+
+@mixin gap-xl() {
+  gap: 2.5rem;
+}
+
+@mixin gap-lg() {
+  gap: 1.5rem;
+}
+
+@mixin gap-ml() {
+  gap: 1.25rem;
+}
+
+@mixin gap() {
+  gap: 1rem;
+}
+
+@mixin gap-sm() {
+  gap: 0.5rem;
+}
+
+@mixin gap-xs() {
+  gap: 0.25rem;
+}
+
+@mixin gap-xxs() {
+  gap: 0.1rem;
+}
+
+/***
+  * Padding shortcuts
+  * Used to standardize the use of given paddings in the app according to the standardized design
+  * In most cases, you achieve design guidelines by using these shortcuts
+ */
+@mixin padding-xxs() {
+  padding: 0.25rem; // Equivalent to 4px
+}
+
+@mixin padding-xs() {
+  padding: 0.5rem; // Equivalent to 8px
+}
+
+@mixin padding-sm() {
+  padding: 1.25rem; // Equivalent to 20px
+}
+
+@mixin padding() {
+  padding: 2rem; // Equivalent to 32px
+}
+
+@mixin padding-lg() {
+  padding: 3rem; // Equivalent to 48px
+}
+
+// Padding for main content in operator views
+@mixin main-padding($padding: 1rem, $main-lateral-padding: 3.75rem) {
+  padding: $padding $main-lateral-padding;
+}
+
+@mixin padding-inline-xxs() {
+  padding-inline: 0.25rem;
+}
+
+@mixin padding-inline-xs() {
+  padding-inline: 0.5rem;
+}
+
+@mixin padding-inline-sm() {
+  padding-inline: 1.25rem;
+}
+
+@mixin padding-inline() {
+  padding-inline: 2rem;
+}
+
+@mixin padding-inline-lg() {
+  padding-inline: 3rem;
+}
+
+/***
+  * Standard container border radius
+  * Created to reuse the same border in most of the containers
+ */
+
+// Used in bigger containers
+@mixin container-border-radius {
+  border-radius: 2rem;
+}
+
+// Used in smaller components, e.g. small info cards
+@mixin container-border-radius-sm {
+  border-radius: 1rem;
+}
+
+// Used in smallest components, e.g. small items in paginator
+@mixin container-border-radius-xs {
+  border-radius: 0.5rem;
+}
+
+// Used in smallest components, e.g. small items in paginator
+@mixin container-border-radius-xxs {
+  border-radius: 0.25rem;
+}
+
+/***
+  * Reuse the same shadows in most of the components
+ */
+@mixin shadow-1() {
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+@mixin shadow-2() {
+  box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.17);
+}
+
+/***
+  * Font utils
+  * Main advantage is being used directly in the HTML without the need
+  * to create a class only for apply font styles.
+ */
+
+@mixin bold() {
+  font-weight: 700;
+}
+
+@mixin semi-bold() {
+  font-weight: 600;
+}
+
+@mixin italic() {
+  font-style: italic;
+}
+
+@mixin medium() {
+  font-weight: 500;
+}
+
+@mixin normal-weight() {
+  font-weight: normal;
+}
+
+@mixin text-xl() {
+  font-size: 3.125rem;
+  line-height: 3.75rem;
+}
+
+@mixin text-md() {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+@mixin text-sm() {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@mixin text-xs() {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+@mixin justify() {
+  text-align: justify;
+}
+
+@mixin center-text() {
+  text-align: center;
+}
+
+/***
+  * Palette utils
+  * Avoid using mat functions when there are simpler attributes to use
+ */
+
+@mixin primary-color($color: 800) {
+  color: mat.m2-get-color-from-palette(pal.$primary-palette, $color);
+}
+
+@mixin accent-color($color: 500) {
+  color: mat.m2-get-color-from-palette(pal.$accent-palette, $color);
+}
+
+@mixin grey-color($color: 500) {
+  color: mat.m2-get-color-from-palette(pal.$grey-palette, $color);
+}
+
+@mixin error-color($color: 600) {
+  color: mat.m2-get-color-from-palette(pal.$error-palette, $color);
+}
+
+@mixin success-color($color: 500) {
+  color: mat.m2-get-color-from-palette(pal.$success-palette, $color);
+}
+
+@mixin warn-color($color: 500) {
+  color: mat.m2-get-color-from-palette(pal.$pending-palette, $color);
+}
+
+@mixin white-color() {
+  color: white;
+}
+
+@mixin black-color() {
+  color: black;
+}
+
+@mixin primary-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$primary-palette, $color);
+}
+
+@mixin secondary-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$accent-palette, $color);
+}
+
+@mixin accent-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$accent-palette, $color);
+}
+
+@mixin grey-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$grey-palette, $color);
+}
+
+@mixin warn-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$pending-palette, $color);
+}
+
+@mixin success-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$success-palette, $color);
+}
+
+@mixin error-background($color: 100) {
+  background-color: mat.m2-get-color-from-palette(pal.$error-palette, $color);
+}
+
+@mixin white-background() {
+  background-color: white;
+}
+
+@mixin disabled() {
+  pointer-events: none !important;
+  cursor: default !important;
+  opacity: 0.4 !important;
+}

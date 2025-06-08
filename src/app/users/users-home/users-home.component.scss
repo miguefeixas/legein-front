@@ -1,0 +1,90 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.call-to-action {
+  @include mix.row;
+  @include mix.primary-background(50);
+  @include mix.horizontal-space-between;
+  @include mix.vertical-center;
+  @include mix.main-padding;
+  height: 12rem;
+}
+
+.claim {
+  @include mix.column;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+  @include mix.gap-sm;
+  max-width: 40rem;
+}
+
+.auth {
+  @include mix.column;
+  @include mix.gap;
+  @include mix.center;
+
+  &__button {
+    width: 9rem !important;
+    height: 2.7rem !important;
+  }
+}
+
+.recommendation {
+  @include mix.row;
+  @include mix.vertical-center;
+  @include mix.grey-background(100);
+  height: 38rem;
+}
+
+.book {
+  @include mix.column;
+  @include mix.horizontal-start;
+  @include mix.vertical-center;
+  @include mix.gap;
+  @include mix.primary-background(200);
+  flex: 1 0 50%;
+  height: 100%;
+
+  &__cover {
+    width: 20rem;
+  }
+}
+
+.reviews {
+  @include mix.column;
+  @include mix.horizontal-start;
+  @include mix.vertical-center;
+  @include mix.gap;
+  @include mix.secondary-background(800);
+  flex: 1 0 50%;
+  height: 100%;
+}
+
+.book-data {
+  @include mix.row;
+  @include mix.gap;
+  @include mix.vertical-end;
+  @include mix.horizontal-center;
+  padding-inline: 1.5rem;
+}
+
+.review {
+  @include mix.white-background;
+  @include mix.container-border-radius-xs;
+  @include mix.padding-xs;
+  @include mix.column;
+  @include mix.vertical-start;
+  @include mix.gap-sm;
+  width: 30rem !important;
+
+  &__data {
+    @include mix.row;
+    @include mix.vertical-center;
+    @include mix.gap-sm;
+    @include mix.horizontal-space-between;
+    width: 100%;
+  }
+}
+
+.toptext {
+  padding-top: 1.5rem;
+}

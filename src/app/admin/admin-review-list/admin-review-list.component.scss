@@ -1,0 +1,8 @@
+@use '../../../scss/utils/mixins' as mix;
+
+.stars-option {
+  @include mix.row;
+  @include mix.horizontal-space-between;
+  @include mix.vertical-center;
+  width: 2.5rem !important;
+}

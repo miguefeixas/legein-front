@@ -1,0 +1,323 @@
+{
+  "COMMONTRANSLATIONS": {
+    "BOOKSTATUS": {
+      "PENDING": "Pendiente",
+      "ACTIVE": "Activo",
+      "REJECTED": "Rechazado",
+      "DELETED": "Eliminado"
+    },
+    "USERROLE": {
+      "ADMIN": "Administrador",
+      "USER": "Usuario",
+      "AUTHOR": "Autor"
+    },
+    "REQUIRED": "Este campo es requerido",
+    "INVALIDEMAIL": "La dirección de correo no es válida",
+    "LOGIN": "Iniciar sesión",
+    "DETAILS": "Detalles",
+    "SAVE": "Guardar",
+    "DISCARD": "Descartar",
+    "NOTAVAILABLE": "No disponible",
+    "SHOWALL": "Mostrar todos",
+    "CLOSE": "Cerrar",
+    "AND": "y",
+    "EDIT": "Editar",
+    "REGISTER": "Regístrate",
+    "BACK": "Volver"
+  },
+  "API": {
+    "ERROR": {
+      "WRONGPASSWORD": "La contraseña actual es incorrecta",
+      "ALREADYEXISTSEMAIL": "¡Ups! Ese correo ya está en uso",
+      "ALREADYEXISTSUSERNAME": "Alguien se te ha adelantado con ese nombre de usuario 😅"
+    }
+  },
+  "GENRES": {
+    "ART": "Arte",
+    "BIOGRAPHY": "Biografía",
+    "CLASSICS": "Clásicos",
+    "COOKING": "Cocina",
+    "ESSAY": "Ensayo",
+    "FANTASY": "Fantasía",
+    "HORROR": "Terror",
+    "MUSIC": "Música",
+    "MYSTERY": "Misterio",
+    "PHOTOGRAPHY": "Fotografía",
+    "SELFHELP": "Autoayuda",
+    "THRILLER": "Thriller",
+    "PHILOSOPHY": "Filosofía",
+    "SPANISHFICTION": "Narrativa española"
+  },
+  "ADMINLOGIN": {
+    "TITLE": "Inicia sesión",
+    "SUBTITLE": "para comenzar a administrar Legein",
+    "REDIRECTCLIENT": "¿Eres usuario?",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "TITLELOGINERROR": "Correo o contraseña incorrectos",
+    "MESSAGELOGINERROR": "Error al iniciar sesión"
+  },
+  "ADMINMENU": {
+    "HOME": "Inicio",
+    "USERS": "Usuarios",
+    "BOOKS": "Libros",
+    "REVIEWS": "Reseñas"
+  },
+  "ADMINHOME": {
+    "KPIS": {
+      "REGISTERCOUNT": "nuevos usuarios",
+      "BOOKSADDED": "libros añadidos",
+      "REVIEWSCOUNT": "nuevas reseñas",
+      "EMERGINGAUTHORSCOUNTS": "nuevos autores emergentes",
+      "PERCENTAGERISE": "Un {{percentage}}% más que la semana pasada",
+      "PERCENTAGEFALL": "Un {{percentage}}% menos que la semana pasada",
+      "PERCENTAGEEQUAL": "Los mismos que la semana pasada"
+    },
+    "TITLE": "¡Hola, {{name}}!",
+    "SUBTITLE": "Esta semana en Legein...",
+    "PENDINGBOOKS": "Libros pendientes de aprobar"
+  },
+  "BOOKS": {
+    "TABLE": {
+      "HEADER": {
+        "TITLE": "Título",
+        "ID": "ID",
+        "ISBN": "ISBN",
+        "STATUS": "Estado",
+        "PAGES": "Páginas",
+        "PUBLISHER": "Editorial",
+        "PUBLICATIONYEAR": "Año de publicación"
+      },
+      "ACTIONS": {
+        "APPROVE": "Aprobar",
+        "REJECT": "Rechazar"
+      },
+      "FILTERS": {
+        "BOOKSTATUS": "Estado",
+        "TITLE": "Busca por título o ISBN",
+        "BOOKPAGES": "Páginas"
+      },
+      "STATUS": {
+        "PENDING": "Pendiente",
+        "ACTIVE": "Activo",
+        "REJECTED": "Rechazado",
+        "DELETED": "Eliminado"
+      }
+    }
+  },
+  "ADMINPROFILE": {
+    "FIELDS": {
+      "NAME": "Nombre",
+      "EMAIL": "Correo electrónico",
+      "USERNAME": "Nombre de usuario",
+      "FIRSTLASTNAME": "Primer apellido",
+      "SECONDLASTNAME": "Segundo apellido"
+    },
+    "PASSWORD": {
+      "PLACEHOLDERS": {
+        "CURRENTPASSWORD": "Introduce tu contraseña actual",
+        "NEWPASSWORD": "Introduce tu nueva contraseña",
+        "CONFIRMPASSWORD": "Confirma tu nueva contraseña"
+      },
+      "LABELS": {
+        "CURRENTPASSWORD": "Contraseña actual",
+        "NEWPASSWORD": "Nueva contraseña",
+        "CONFIRMPASSWORD": "Confirmar nueva contraseña"
+      },
+      "DISCLAIMER": "Recuerda que tu contraseña debe tener: <ul><li>Al menos <strong>8 caracteres</strong></li><li>Al menos <strong>una letra mayúscula</strong></li><li>Al menos <strong>una letra minúscula</strong></li><li>Al menos <strong>un número</strong></li><li>Al menos <strong>un carácter especial</strong</li></ul>",
+      "NOTSTRONG": "La contraseña no cumple con los requisitos mínimos",
+      "NOTMATCH": "Las contraseñas no coinciden"
+    },
+    "TITLE": "Mi perfil",
+    "EDIT": "Editar perfil",
+    "PASSWORDEDIT": "Editar contraseña",
+    "SUCCESSPROFILEUPDATE": "Perfil actualizado correctamente",
+    "ERRORPROFILEUPDATE": "Error al actualizar el perfil",
+    "ERRORPASSWORDCHANGE": "Error al cambiar la contraseña"
+  },
+  "ADMINUSERS": {
+    "TITLE": "Usuarios"
+  },
+  "USERS": {
+    "TABLE": {
+      "HEADER": {
+        "ID": "ID",
+        "NAME": "Nombre",
+        "USERNAME": "Usuario",
+        "REGISTERDATE": "Fecha de registro",
+        "ROLE": "Rol",
+        "STATUS": "Estado"
+      },
+      "STATUS": {
+        "PENDING": "Pendiente",
+        "ACTIVE": "Activo",
+        "DELETED": "Eliminado"
+      },
+      "FILTERS": {
+        "USERROLE": "Rol",
+        "USERSTATUS": "Estado",
+        "USERNAME": "Busca por nombre de usuario"
+      }
+    }
+  },
+  "ADMINBOOKS": {
+    "TITLE": "Libros",
+    "ADDBOOK": "Añadir libro"
+  },
+  "ADDBOOKMODAL": {
+    "TITLE": "Añadir un nuevo libro",
+    "UPLOADIMAGE": "Subir imagen",
+    "SUBTITLEUPLOADIMAGE": "Si no quieres añadir una imagen ahora, puedes hacerlo más tarde.",
+    "ADDIMAGE": "Añade una portada al libro",
+    "NOTUPLOADIMAGE": "En otro momento",
+    "CREATEBOOKSUCCESS": "Libro creado con éxito",
+    "FORM": {
+      "LABELS": {
+        "TITLE": "Título",
+        "ISBN": "ISBN",
+        "PUBLISHER": "Editorial",
+        "PAGES": "Páginas",
+        "LANGUAGE": "Idioma",
+        "MAINGENRE": "Temática principal",
+        "SECONDARYGENRE": "Temática secundaria",
+        "AUTHOR": "Autor",
+        "OVERVIEW": "Resumen",
+        "PUBLICATIONYEAR": "Año de publicación"
+      },
+      "PLACEHOLDERS": {
+        "TITLE": "Título del libro",
+        "ISBN": "97XXXXXXXXXXX",
+        "PUBLISHER": "Editorial del libro",
+        "PAGES": "Páginas",
+        "LANGUAGE": "Idioma",
+        "MAINGENRE": "Temática principal del libro",
+        "SECONDARYGENRE": "Temática secundaria del libro",
+        "AUTHOR": "Autor/es del libro",
+        "COVER": "Arrastra o haz clic para subir la portada",
+        "OVERVIEW": "Resumen del libro",
+        "PUBLICATIONYEAR": "Ej. 2024",
+        "ALLOWEDFORMATS": "Formatos permitidos: jpg, jpeg o png",
+        "MAXFILESIZE": "Tamaño máximo: 10MB"
+      },
+      "ERRORS": {
+        "LANGUAGE": "Se requiere un idioma",
+        "INVALIDFILEMESSAGE": "Solo se permiten archivos con formato .jpg, .jpeg o .png",
+        "INVALIDFILETITLE": "Archivo no válido",
+        "FILETOOLARGEMESSAGE": "El tamaño del archivo no puede superar los 10MB",
+        "FILETOOLARGETITLE": "Archivo demasiado grande",
+        "INVALIDISBN": "El ISBN no es válido",
+        "LENGTHISBN": "El ISBN debe de tener 10 o 13 caracteres"
+      }
+    },
+    "STEPS": {
+      "FIRST": "Algunos datos sobre el libro...",
+      "SECOND": "¿Quién lo hizo posible?",
+      "THIRD": "¿De qué va?",
+      "FOURTH": "Añade una imagen de portada y listo!"
+    }
+  },
+  "ADMINBOOKDETAILS": {
+    "ANDMORE": "y <strong>{{numberOfAuthors}}</strong> más",
+    "COVER": "Portada",
+    "INFORMATION": "Información",
+    "PUBLISHER": "Editorial",
+    "PUBLICATIONYEAR": "Año de publicación",
+    "MAINGENRE": "Temática principal",
+    "SECONDARYGENRE": "Temática secundaria",
+    "PAGES": "Páginas",
+    "ISBN": "ISBN",
+    "STATUS": "Estado",
+    "LANGUAGE": "Idioma",
+    "OVERVIEW": "Resumen",
+    "UPDATEDSUCCESS": "Libro actualizado correctamente",
+    "UPDATEDERROR": "Error al actualizar el libro",
+    "EDITSTATUS": "Editar estado",
+    "CHANGECOVER": "Cambiar imagen de portada"
+  },
+  "ADMINREVIEWS": {
+    "TABLE": {
+      "HEADER": {
+        "ID": "ID",
+        "CONTENT": "Reseña",
+        "TITLE": "Título",
+        "AUTHOR": "Autor",
+        "RATING": "Valoración",
+        "STATUS": "Estado"
+      },
+      "ACTIONS": {
+        "SEEMORE": "Ver más",
+        "REACTIVATE": "Reactivar",
+        "DELETE": "Eliminar"
+      },
+      "FILTERS": {
+        "USERNAME": "Busca por nombre de usuario",
+        "RATING": "Puntuación",
+        "REVIEWSTATUS": "Estado"
+      }
+    },
+    "TITLE": "Reseñas",
+    "SUCCESSREVIEWSTATUS": "Estado de la reseña actualizado correctamente",
+    "ERRORREVIEWSTATUS": "Error al actualizar el estado de la reseña"
+  },
+  "REVIEWMODAL": {
+    "FIELDS": {
+      "TITLE": "Título",
+      "REVIEW": "Reseña",
+      "USER": "Usuario",
+      "BOOK": "Libro"
+    },
+    "STATUS": {
+      "ACTIVE": "Activa",
+      "DELETED": "Eliminada"
+    },
+    "TITLE": "Reseña"
+  },
+  "LANDING": {
+    "TITLE": "Una biblioteca digital, abierta y global",
+    "SUBTITLE": "Únete a la comunicad donde los lectores y autores se encuentran para compartir y descubrir nuevas obras",
+    "ARECOMMENDATION": "¿Una recomendación?",
+    "USERSREVIEWS": "Descubre lo que los lectores opinan sobre este título"
+  },
+  "SIGNUP": {
+    "PLACEHOLDERS": {
+      "NAME": "Nombre",
+      "LASTNAME": "Primer apellido",
+      "USERNAME": "Nombre de usuario",
+      "DATEOFBIRTH": "Fecha de nacimiento"
+    },
+    "TITLE": "Regístrate",
+    "WELCOME": "¡Bienvenido! Cuéntanos un poco sobre ti...",
+    "IAMAUTHOR": "Soy autor",
+    "IAMREADER": "Soy lector",
+    "AUTHORREGISTER": "Vamos a empezar con tu perfil de <span class=\"shiny-text\">autor</span>",
+    "USERREGISTER": "Vamos a empezar con tu perfil de <span class=\"shiny-text\">lector</span>",
+    "NOTSTRONGPASS": "La contraseña parece algo débil, ¿no?",
+    "TITLEERROR": "Error al registrarse",
+    "MESSAGEERROR": "Parece que ha habido un error al registrarte, por favor inténtalo de nuevo"
+  },
+  "USERDETAILS": {
+    "PERSONALDATA": "Datos personales",
+    "EMAIL": "Correo electrónico",
+    "USERNAME": "Nombre de usuario",
+    "PHONENUMBER": "Número de teléfono",
+    "DATEOFBIRTH": "Fecha de nacimiento",
+    "REVIEWS": "Reseñas publicadas",
+    "SEEREVIEWS": "Ver reseñas",
+    "ACTIVATE": "Activar cuenta",
+    "DELETE": "Eliminar cuenta",
+    "PERMANENTDELETE": "Eliminar cuenta permanentemente"
+  },
+  "USERPROFILE": {
+    "DELETEACCOUNT": "Eliminar cuenta"
+  },
+  "DELETEACCOUNT": {
+    "TITLE": "Eliminar cuenta",
+    "MESSAGE": "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción es irreversible y eliminará todos tus datos.",
+    "CONFIRM": "Confirmar",
+    "CANCEL": "Cancelar"
+  },
+  "MAINMENU": {
+    "LISTS": "Mis listas"
+  }
+
+}

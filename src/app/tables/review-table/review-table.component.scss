@@ -1,0 +1,19 @@
+@use '../../../scss/utils/mixins' as mix;
+
+:host {
+  ::ng-deep {
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      &.mat-column-content {
+        width: 38rem;
+      }
+    }
+  }
+}
+
+.stars {
+  @include mix.row;
+  @include mix.horizontal-space-between;
+  @include mix.vertical-center;
+  width: 3rem !important;
+}

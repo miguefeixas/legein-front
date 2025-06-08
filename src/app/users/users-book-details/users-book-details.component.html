@@ -1,0 +1,95 @@
+<div class="main-padding row gap-xl">
+  <div class="book-details column gap">
+    <div class="row gap">
+      <img [src]="book?.cover" class="book-cover" alt="Book cover"/>
+      <div class="column gap book-details">
+        <h2>{{ book?.title }}</h2>
+        <div class="column gap-xs">
+          <h3>Detalles sobre el libro:</h3>
+          @for (author of book?.authors; track author) {
+            <div class="row gap-sm vertical-center">
+              <p class="semi-bold">Autor:</p>
+              <p>{{ author.fullName }}</p>
+            </div>
+          }
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Páginas:</p>
+            <p>{{ book?.pages }}</p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Editorial:</p>
+            <p>{{ book?.publisher?.name }}</p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">ISBN:</p>
+            <p>{{ book?.isbn }}</p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Año de publicación:</p>
+            <p>{{ book?.publicationYear }}</p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Idioma:</p>
+            <p>{{ book?.language }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column gap-sm book-overview">
+      <h3>Sipnosis</h3>
+      <p [innerHTML]="book?.overview"></p>
+    </div>
+    <div class="book-reviews gap column">
+      <h3>Valoraciones</h3>
+      @for (review of reviews; track review) {
+        <div class="column gap-sm">
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Valoración:</p>
+            <p>{{ review.rating }}/5 <ion-icon class="primary-color-700" name="star-outline"></ion-icon></p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Usuario:</p>
+            <p>{{ review.user.username }}</p>
+          </div>
+          <div class="row gap-sm vertical-center">
+            <p class="semi-bold">Fecha:</p>
+            <p>{{ review.createdAt | date: 'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="column gap">
+            <p class="grey-color-500">{{ review.content }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="horizontal-start vertical-start column gap">
+    <h3>Valorar libro</h3>
+    <form class="form-container" [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+      <div class="form-input">
+        <mat-label>Puntuación</mat-label>
+        <mat-form-field class="form-input--xs">
+          <mat-select formControlName="rating" placeholder="Valoración">
+            <mat-option [value]="1">1</mat-option>
+            <mat-option [value]="2">2</mat-option>
+            <mat-option [value]="3">3</mat-option>
+            <mat-option [value]="4">4</mat-option>
+            <mat-option [value]="5">5</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-input form-input--xl">
+        <mat-label>Título</mat-label>
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="content" placeholder="Título de la valoración"/>
+        </mat-form-field>
+      </div>
+      <div class="form-input form-input--xl">
+        <mat-label>Contenido</mat-label>
+        <mat-form-field appearance="fill">
+          <textarea rows="7" matInput formControlName="content" placeholder="Cuéntanos que te ha parecido el libro"></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-button class="button button--primary" type="submit">Enviar valoración</button>
+    </form>
+  </div>
+</div>

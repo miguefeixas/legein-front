@@ -1,0 +1,54 @@
+<div class="padding column center fill-height gap">
+  <h2>Legein</h2>
+  <div class="column horizontal-start vertical-center gap">
+    <h3>Inicia sesión</h3>
+    <form class="form-container" [formGroup]="loginForm">
+      <div class="form-input form-input--xl">
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="email"
+            required
+            type="email"
+            placeholder="{{ 'ADMINLOGIN.EMAIL' | translate }}"
+            aria-label="Email" />
+          @if (loginForm.get('email')?.hasError('required')) {
+            <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+          }
+          @if (loginForm.get('email')?.hasError('email')) {
+            <mat-error>{{
+                'COMMONTRANSLATIONS.INVALIDEMAIL' | translate
+              }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="form-input form-input--xl">
+        <mat-form-field>
+          <input
+            matInput
+            [type]="passwordVisible ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="{{ 'ADMINLOGIN.PASSWORD' | translate }}"
+            aria-label="Password" />
+          <ion-icon
+            matSuffix
+            (click)="passwordVisibility($event)"
+            name="{{ passwordVisible ? 'eye-off-outline' : 'eye-outline' }}"
+            class="icon-md accent-color-500"></ion-icon>
+          @if (loginForm.get('password')?.hasError('required')) {
+            <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </form>
+    <button
+      mat-button
+      class="button button--primary button--lg"
+      (click)="login()"
+      [disabled]="!loginForm.valid">
+      {{ 'COMMONTRANSLATIONS.LOGIN' | translate }}
+      <ion-icon name="log-in-outline" class="icon-sm"></ion-icon>
+    </button>
+  </div>
+</div>
+<a routerLink="/signup" class="padding">¿No tienes cuenta? Regístrate aquí</a>

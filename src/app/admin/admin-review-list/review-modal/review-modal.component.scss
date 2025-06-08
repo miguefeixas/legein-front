@@ -1,0 +1,12 @@
+@use '../../../../scss/utils/mixins' as mix;
+
+.review-field {
+  @include mix.row;
+
+  &__title {
+    @include mix.bold;
+  }
+
+  &__data {
+  }
+}

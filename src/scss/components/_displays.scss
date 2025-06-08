@@ -1,0 +1,479 @@
+@use '../utils/mixins' as mix;
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.column {
+  @include mix.column;
+}
+
+.row {
+  @include mix.row;
+}
+
+.gap-xxl {
+  @include mix.gap-xxl;
+}
+
+.gap-xl {
+  @include mix.gap-xl;
+}
+
+.gap-lg {
+  @include mix.gap-lg;
+}
+
+.gap-ml {
+  @include mix.gap-ml;
+}
+
+.gap {
+  @include mix.gap;
+}
+
+.gap-sm {
+  @include mix.gap-sm;
+}
+
+.gap-xs {
+  @include mix.gap-xs;
+}
+
+.gap-xxs {
+  @include mix.gap-xxs;
+}
+
+.center {
+  @include mix.center;
+}
+
+.fill {
+  width: 100%;
+}
+
+.fill-height {
+  height: 100%;
+}
+
+.fill-vertical-horizontal {
+  width: 100%;
+  height: 100%;
+}
+
+.padding {
+  @include mix.padding;
+}
+
+.padding-sm {
+  @include mix.padding-sm;
+}
+
+.padding-xs {
+  @include mix.padding-xs;
+}
+
+.padding-lg {
+  @include mix.padding-lg;
+}
+
+.main-padding {
+  @include mix.main-padding;
+}
+
+/***
+  * Alignments
+  */
+
+.horizontal-start {
+  @include mix.horizontal-start;
+}
+
+.horizontal-center {
+  @include mix.horizontal-center;
+}
+
+.horizontal-end {
+  @include mix.horizontal-end;
+}
+
+.horizontal-space-between {
+  @include mix.horizontal-space-between;
+}
+
+.vertical-end {
+  @include mix.vertical-end;
+}
+
+.vertical-center {
+  @include mix.vertical-center;
+}
+
+.vertical-start {
+  @include mix.vertical-start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.grow {
+  display: flex;
+  flex-grow: 1;
+}
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+/***
+  * Font displays
+  */
+.bold {
+  @include mix.bold;
+}
+
+.semi-bold {
+  @include mix.semi-bold;
+}
+
+.italic {
+  @include mix.italic;
+}
+
+.medium {
+  @include mix.medium;
+}
+
+.font-size-2 {
+  font-size: 1.2em;
+}
+
+.font-size-5 {
+  font-size: 1.5em;
+}
+
+.text-xs {
+  @include mix.text-xs;
+}
+
+.text-sm {
+  @include mix.text-sm;
+}
+
+.text-md {
+  @include mix.text-md;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+.text-xxl {
+  font-size: 2.5rem;
+}
+
+.icon-xxs {
+  font-size: 0.75rem;
+}
+
+.icon-xs {
+  font-size: 1rem;
+}
+
+.icon-sm {
+  font-size: 1.25rem;
+}
+
+.icon-md {
+  font-size: 1.5rem;
+}
+
+.icon-lg {
+  font-size: 2rem;
+}
+
+.icon-xl {
+  font-size: 2.7rem;
+}
+
+/**
+  * Text alignments
+ */
+.justify {
+  @include mix.justify;
+}
+
+/***
+  * Palette utils
+  */
+//Primary color
+.primary-color-900 {
+  @include mix.primary-color(900);
+}
+.primary-color-800 {
+  @include mix.primary-color(800);
+}
+.primary-color-700 {
+  @include mix.primary-color(700);
+}
+.primary-color-600 {
+  @include mix.primary-color(600);
+}
+.primary-color-500 {
+  @include mix.primary-color(500);
+}
+.primary-color-400 {
+  @include mix.primary-color(400);
+}
+.primary-color-200 {
+  @include mix.primary-color(200);
+}
+.primary-color-100 {
+  @include mix.primary-color(100);
+}
+.primary-color-50 {
+  @include mix.primary-color(50);
+}
+
+// Primary background
+.primary-background-900 {
+  @include mix.primary-background(900);
+}
+.primary-background-800 {
+  @include mix.primary-background(800);
+}
+.primary-background-700 {
+  @include mix.primary-background(700);
+}
+.primary-background-600 {
+  @include mix.primary-background(600);
+}
+.primary-background-500 {
+  @include mix.primary-background(500);
+}
+.primary-background-400 {
+  @include mix.primary-background(400);
+}
+.primary-background-300 {
+  @include mix.primary-background(300);
+}
+.primary-background-200 {
+  @include mix.primary-background(200);
+}
+.primary-background-100 {
+  @include mix.primary-background(100);
+}
+.primary-background-50 {
+  @include mix.primary-background(50);
+}
+
+// Accent color
+.accent-color-900 {
+  @include mix.accent-color(900);
+}
+.accent-color-800 {
+  @include mix.accent-color(800);
+}
+.accent-color-700 {
+  @include mix.accent-color(700);
+}
+.accent-color-600 {
+  @include mix.accent-color(600);
+}
+.accent-color-500 {
+  @include mix.accent-color(500);
+}
+.accent-color-400 {
+  @include mix.accent-color(400);
+}
+.accent-color-300 {
+  @include mix.accent-color(300);
+}
+.accent-color-200 {
+  @include mix.accent-color(200);
+}
+.accent-color-100 {
+  @include mix.accent-color(100);
+}
+.accent-color-50 {
+  @include mix.accent-color(50);
+}
+
+// Accent background
+.accent-background-900 {
+  @include mix.accent-background(900);
+}
+.accent-background-800 {
+  @include mix.accent-background(800);
+}
+.accent-background-700 {
+  @include mix.accent-background(700);
+}
+.accent-background-600 {
+  @include mix.accent-background(600);
+}
+.accent-background-500 {
+  @include mix.accent-background(500);
+}
+.accent-background-400 {
+  @include mix.accent-background(400);
+}
+.accent-background-300 {
+  @include mix.accent-background(300);
+}
+.accent-background-200 {
+  @include mix.accent-background(200);
+}
+.accent-background-100 {
+  @include mix.accent-background(100);
+}
+.accent-background-50 {
+  @include mix.accent-background(50);
+}
+
+// Black color
+.black-color {
+  color: black;
+}
+
+// White color
+.white-color {
+  color: white;
+}
+
+// Grey color
+
+.grey-color-800 {
+  @include mix.grey-color(800);
+}
+
+.grey-color-700 {
+  @include mix.grey-color(700);
+}
+
+.grey-color-500 {
+  @include mix.grey-color(500);
+}
+
+.grey-color-400 {
+  @include mix.grey-color(400);
+}
+
+.warn-color-500 {
+  @include mix.warn-color(500);
+}
+
+.warn-color-800 {
+  @include mix.warn-color(800);
+}
+
+.warn-background-200 {
+  @include mix.warn-background(200);
+}
+
+.error-color-300 {
+  @include mix.error-color(300);
+}
+
+.error-color-500 {
+  @include mix.error-color(500);
+}
+
+.error-color-600 {
+  @include mix.error-color(600);
+}
+
+.error-background-100 {
+  @include mix.error-background(100);
+}
+
+.success-color-500 {
+  @include mix.success-color(500);
+}
+.grey-background-200 {
+  @include mix.grey-background(200);
+}
+.grey-background-100 {
+  @include mix.grey-background(100);
+}
+.grey-background-50 {
+  @include mix.grey-background(50);
+}
+.background-white {
+  background-color: white;
+}
+
+.shadow-1 {
+  @include mix.shadow-1;
+}
+
+.shadow-2 {
+  @include mix.shadow-2;
+}
+
+.container-border-radius {
+  @include mix.container-border-radius;
+}
+
+.container-border-radius-xs {
+  @include mix.container-border-radius-xs;
+}
+
+.container-border-radius-sm {
+  @include mix.container-border-radius-sm;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.margin-top-sm {
+  margin-top: 0.5rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-error {
+  margin-bottom: 1.25rem;
+}
+
+.margin-right {
+  margin-right: 1rem;
+}
+
+.margin-right-sm {
+  margin-right: 0.5rem;
+}
+
+.margin-left {
+  margin-left: 1rem;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.disabled {
+  @include mix.disabled;
+}

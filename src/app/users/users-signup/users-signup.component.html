@@ -1,0 +1,144 @@
+<div class="padding column center fill-height gap">
+  @if (userToRegister) {
+    <a class="text-button back-button" (click)="pickRole()"><ion-icon name="chevron-back-outline"></ion-icon>{{ 'COMMONTRANSLATIONS.BACK' | translate }}</a>
+  }
+  <h2>Legein</h2>
+  @if (userToRegister) {
+    @if (userToRegister === userRole.AUTHOR) {
+      <h3 [innerHTML]="'SIGNUP.AUTHORREGISTER' | translate"></h3>
+    } @else {
+      <h3 [innerHTML]="'SIGNUP.USERREGISTER' | translate"></h3>
+    }
+    <div class="column horizontal-start vertical-center gap">
+      <form class="form-container" [formGroup]="signupForm">
+        <div class="row gap center">
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="name"
+                required
+                type="text"
+                placeholder="{{ 'SIGNUP.PLACEHOLDERS.NAME' | translate }}"
+                aria-label="Name" />
+              @if (signupForm.get('name')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="firstLastName"
+                required
+                type="text"
+                placeholder="{{ 'SIGNUP.PLACEHOLDERS.LASTNAME' | translate }}"
+                aria-label="First last name" />
+              @if (signupForm.get('firstLastName')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row gap center">
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="username"
+                required
+                type="text"
+                placeholder="{{ 'SIGNUP.PLACEHOLDERS.USERNAME' | translate }}"
+                aria-label="Username" />
+              @if (signupForm.get('username')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+              @if (signupForm.get('username')?.hasError('usernameExists')) {
+                <mat-error>{{ 'API.ERROR.ALREADYEXISTSUSERNAME' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input matInput formControlName="dateOfBirth" required [matDatepicker]="picker" [matDatepickerFilter]="dateFilter"  placeholder="{{ 'SIGNUP.PLACEHOLDERS.DATEOFBIRTH' | translate }}">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"><ion-icon class="icon-md accent-color-500" name="calendar-outline" matDatepickerToggleIcon></ion-icon></mat-datepicker-toggle>
+              <mat-datepicker [startAt]="startDate()" #picker></mat-datepicker>
+              @if (signupForm.get('dateOfBirth')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row gap center">
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input
+                matInput
+                formControlName="email"
+                required
+                type="email"
+                placeholder="{{ 'ADMINLOGIN.EMAIL' | translate }}"
+                aria-label="Email" />
+              @if (signupForm.get('email')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+              @if (signupForm.get('email')?.hasError('email')) {
+                <mat-error>{{
+                    'COMMONTRANSLATIONS.INVALIDEMAIL' | translate
+                  }}</mat-error>
+              }
+              @if (signupForm.get('email')?.hasError('emailExists')) {
+                <mat-error>{{ 'API.ERROR.ALREADYEXISTSEMAIL' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="form-input form-input--lg">
+            <mat-form-field>
+              <input
+                matInput
+                [type]="passwordVisible ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="{{ 'ADMINLOGIN.PASSWORD' | translate }}"
+                aria-label="Password" />
+              <ion-icon
+                matSuffix
+                (click)="passwordVisibility($event)"
+                name="{{ passwordVisible ? 'eye-off-outline' : 'eye-outline' }}"
+                class="icon-md accent-color-500 margin-right-sm"></ion-icon>
+              @if (signupForm.get('password')?.hasError('required')) {
+                <mat-error>{{ 'COMMONTRANSLATIONS.REQUIRED' | translate }}</mat-error>
+              }
+              @if (signupForm.get('password')?.hasError('strongPassword')) {
+                <mat-error>{{
+                  'SIGNUP.NOTSTRONGPASS' | translate
+                }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <button
+        mat-button
+        class="button button--primary button--lg"
+        (click)="signup()"
+        [disabled]="!signupForm.valid">
+        Registrarse
+        <ion-icon name="log-in-outline" class="icon-sm"></ion-icon>
+      </button>
+    </div>
+  } @else {
+    <h3>{{ 'SIGNUP.WELCOME' | translate }}</h3>
+    <div class="row gap center">
+      <div class="signup-option" (click)="pickRole(userRole.AUTHOR)">
+        <ion-icon class="icon-lg primary-color-800" name="pencil-outline"></ion-icon>
+        <p>{{ 'SIGNUP.IAMAUTHOR' | translate }}</p>
+      </div>
+      <div class="signup-option" (click)="pickRole(userRole.USER)">
+        <ion-icon class="icon-lg primary-color-800" name="book-outline"></ion-icon>
+        <p>{{ 'SIGNUP.IAMREADER' | translate }}</p>
+      </div>
+    </div>
+  }
+</div>
+<a routerLink="/login" class="padding">¿Ya estás registrado? ¡Inicia sesión!</a>

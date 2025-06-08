@@ -1,0 +1,52 @@
+<div class="main-padding column gap">
+  <h2>Libros</h2>
+  <form class="filters" (ngSubmit)="applyFilters()">
+    <!-- Filtro por título -->
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar por título</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Buscar por título"
+        [(ngModel)]="filterTitle"
+        name="title"
+        (ngModelChange)="applyFilters()"
+      />
+    </mat-form-field>
+
+    <!-- Filtro por año de publicación -->
+    <mat-form-field appearance="fill">
+      <mat-label>Año de publicación</mat-label>
+      <mat-select
+        [(ngModel)]="filterYear"
+        name="year"
+        (ngModelChange)="applyFilters()"
+      >
+        <mat-option value="">Todos los años</mat-option>
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <div class="books">
+    @for (book of pagedBooks; track book) {
+      <div class="book" (click)="goToBook(book.id)">
+        @if (book.cover) {
+          <img [src]="book.cover" alt="book title" class="book-cover" />
+        } @else {
+          <img src="assets/images/NoCover.png" alt="book title" class="book-cover" />
+        }
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.authors?.[0]?.fullName }}</p>
+      </div>
+    }
+  </div>
+
+  <mat-paginator
+    [length]="books.length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

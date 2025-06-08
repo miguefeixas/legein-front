@@ -1,0 +1,108 @@
+<div class="main-padding row gap">
+  <div class="left-container padding-sm column vertical-start horizontal-start gap-xl">
+    <div class="row vertical-start horizontal-start">
+      <div class="column horizontal-start vertical-center gap-sm">
+        <img [src]="profilePictureUrl" alt="Profile picture" class="profile-picture"/>
+        <p class="text-lg semi-bold primary-color-700">&#64;{{ user?.username }}</p>
+        <p>{{ user?.fullName }}</p>
+      </div>
+      <div class="column horizontal-start vertical-start gap-sm padding fill">
+        <div class="row gap-sm fill">
+          <span class="title">Fecha de nacimiento:</span>
+          @if (user?.dateOfBirth) {
+            <p class="data">{{ user?.dateOfBirth | date: 'dd/MM/yyy' }}</p>
+          } @else {
+            <p class="data data--unavailable">No disponible</p>
+          }
+        </div>
+        <div class="row gap-sm fill">
+          <span class="title">Correo electrónico:</span>
+          @if (user?.email) {
+            <p class="data">{{ user?.email }}</p>
+          } @else {
+            <p class="data data--unavailable">No disponible</p>
+          }
+        </div>
+        <div class="row gap-sm fill">
+          <span class="title">Teléfono:</span>
+          @if (user?.phoneNumber) {
+            <p class="data">{{ user?.phoneNumber }}</p>
+          } @else {
+            <p class="data data--unavailable">No disponible</p>
+          }
+        </div>
+        <div class="row horizontal-start vertical-center gap margin-top">
+          <button mat-button class="button button--primary button--extended" (click)="openEditProfileDialog()">Editar perfil <ion-icon class="icon-md" name="create-outline"></ion-icon></button>
+          <a class="text-button text-button--danger no-margin" (click)="deleteAccount()">{{ 'USERPROFILE.DELETEACCOUNT' | translate }} <ion-icon class="icon-md" name="trash-outline"></ion-icon></a>
+        </div>
+      </div>
+    </div>
+    <div class="column horizontal-start vertical-start gap fill">
+      <div class="row fill horizontal-space-between">
+        <h3>Mis valoraciones</h3>
+        <a class="text-button" routerLink="/users/reviews">Ver todas</a>
+      </div>
+      @for (review of reviews; track review; let i = $index) {
+        <div class="column horizontal-start vertical-start gap-sm fill">
+          <div class="row horizontal-start gap-ml">
+            <p class="semi-bold">"{{ review.title }}"</p>
+            <p>-</p>
+            <p>{{ review.book.title }}</p>
+            <p>-</p>
+            <p class="grey-color-400">{{ review.rating }}/5 <ion-icon class="primary-color-700" name="star-outline"></ion-icon></p>
+          </div>
+          <div class="column horizontal-start">
+            <p class="grey-color-500">{{ review.content }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="right-container padding-sm column vertical-start horizontal-start gap-xl">
+    <div class="column horizontal-start vertical-start gap-sm left-container__unit">
+      <div class="row fill horizontal-space-between vertical-center">
+        <h3>Amigos</h3>
+        <a class="see-all-link" routerLink="/users/profile">Ver todos</a>
+      </div>
+      <div class="column horizontal-start gap-sm fill">
+        <div class="row horizontal-start vertical-center gap-sm">
+          <img src="assets/images/ProfPic2.png" class="friend-icon">
+          <div class="column horizontal-start">
+            <p>Daniela Arango</p>
+            <p class="semi-bold primary-color-700">&#64;danielaarango</p>
+          </div>
+        </div>
+        <div class="row horizontal-start vertical-center gap-sm">
+          <img src="assets/images/ProfPic3.png" class="friend-icon">
+          <div class="column horizontal-start">
+            <p>David Ruiz</p>
+            <p class="semi-bold primary-color-700">&#64;davidruiz</p>
+          </div>
+        </div>
+        <div class="row horizontal-start vertical-center gap-sm">
+          <img src="assets/images/ProfPic4.png" class="friend-icon">
+          <div class="column horizontal-start">
+            <p>Elena Mérida</p>
+            <p class="semi-bold primary-color-700">&#64;elenamerida</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column horizontal-start vertical-start gap-sm left-container__unit">
+      <div class="row horizontal-space-between vertical-center fill">
+        <h3>Mis listas de lectura</h3>
+        <a routerLink="/users/profile">Ver todas</a>
+      </div>
+      <div class="column horizontal-start gap-sm">
+        <div class="book-list">
+          <p class="semi-bold">Mis favoritos</p>
+          <p class="grey-color-400">3 libros</p>
+        </div>
+        <div class="book-list" routerLink="/users/list/1">
+          <p class="semi-bold">Lista1</p>
+          <p class="grey-color-400">2 libros</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
