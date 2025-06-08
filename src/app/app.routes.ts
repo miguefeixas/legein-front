@@ -152,7 +152,7 @@ export const routes: Routes = [
         canActivate: [UserGuard],
       },
       {
-        path: 'list/:id',
+        path: 'lists/:id',
         component: UsersBooklistsComponent,
         data: { role: UserRole.USER },
         canActivate: [UserGuard],

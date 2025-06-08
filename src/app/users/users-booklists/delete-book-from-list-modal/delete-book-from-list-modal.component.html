@@ -1,0 +1,8 @@
+<h2>{{ 'DELETEBOOKFROMLIST.TITLE' | translate  }}</h2>
+<mat-dialog-content>
+  <p>{{ 'DELETEBOOKFROMLIST.MESSAGE' | translate }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <a class="text-button text-button--grey" (click)="closeModal()">{{ 'DELETEBOOKFROMLIST.CANCEL' | translate }}</a>
+  <a class="text-button text-button--danger" (click)="deleteBook()">{{ 'DELETEBOOKFROMLIST.CONFIRM' | translate }}<ion-icon name="trash-outline"></ion-icon></a>
+</mat-dialog-actions>

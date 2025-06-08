@@ -1,15 +1,26 @@
 <div class="main-padding column gap">
-  <h2>Lista1</h2>
+  <div class="row horizontal-space-between vertical-center">
+    <h2>{{ bookList?.name }}</h2>
+    <button mat-button class="button button--primary" (click)="addBookModal()">{{ 'BOOKLIST.ADDBOOK' | translate }}<ion-icon class="icon-sm" name="add-outline"></ion-icon></button>
+  </div>
   <div class="books">
-    <div class="book" (click)="goToBook(4)">
-      <img src="https://storage.googleapis.com/legein-dev/cover_images/1/Captura%20de%20pantalla%202024-10-14%20a%20las%205.32.42.png" alt="book title" class="book-cover" />
-      <h3>Últimas tardes con Teresa</h3>
-      <p>Juan Marsé Carbó</p>
-    </div>
-    <div class="book" (click)="goToBook(1)">
-      <img src="https://storage.googleapis.com/legein-dev/cover_images/1/Captura%20de%20pantalla%202024-10-14%20a%20las%203.41.45.png" alt="book title" class="book-cover" />
-      <h3>Sobre la fotografía</h3>
-      <p>Susan Sontag</p>
-    </div>
+    @if (bookList?.books?.length === 0) {
+      <p class="no-books">{{ 'BOOKLIST.NOBOOKS' | translate }}</p>
+    } @else {
+      @for (book of bookList?.books; track book) {
+        <div class="book" (click)="goToBook(book.id)">
+          @if (book.cover) {
+            <img [src]="book.cover" alt="book title" class="book-cover" />
+          } @else {
+            <img src="assets/images/NoCover.png" alt="book title" class="book-cover" />
+          }
+          <h3>{{ book.title }}</h3>
+          <div class="row gap-xs vertical-center horizontal-space-between">
+            <p>{{ book.authors?.[0]?.fullName }}</p>
+            <button mat-button class="button button--danger" (click)="deleteBookFromListModal(book, $event)"><ion-icon class="icon-md" name="trash-outline"></ion-icon></button>
+          </div>
+        </div>
+      }
+    }
   </div>
 </div>

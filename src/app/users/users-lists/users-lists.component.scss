@@ -1,0 +1,20 @@
+@use '../../../scss/utils/mixins' as mix;
+@use '../../../scss/palette' as pal;
+@use '@angular/material' as mat;
+
+.book-list {
+  @include mix.column;
+  @include mix.gap-sm;
+  @include mix.horizontal-start;
+  @include mix.vertical-start;
+  @include mix.container-border-radius-xs;
+  @include mix.padding;
+  border: 1px solid mat.m2-get-color-from-palette(pal.$primary-palette, 100);
+
+  &:hover {
+    @include mix.grey-background(100);
+    border: 1px solid mat.m2-get-color-from-palette(pal.$primary-palette, 200);
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+  }
+}

@@ -1,0 +1,22 @@
+<h2>{{ 'CREATEBOOKLIST.TITLE' | translate  }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="createListForm" class="form-container">
+    <div class="form-input">
+      <mat-label>{{ 'CREATEBOOKLIST.NAME' | translate }}</mat-label>
+      <mat-form-field appearance="fill">
+        <input matInput formControlName="name" [placeholder]="'CREATEBOOKLIST.PLACEHOLDER' | translate"/>
+        @if (createListForm.get('name')?.hasError('required')) {
+          <mat-error>{{
+            'COMMONTRANSLATIONS.REQUIRED' | translate
+          }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="row vertical-center horizontal-end gap-sm">
+    <a class="text-button text-button--grey" (click)="closeModal()">{{ 'CREATEBOOKLIST.CANCEL' | translate }}</a>
+    <button mat-button class="button button--primary" (click)="createList()">{{ 'CREATEBOOKLIST.CONFIRM' | translate }}<ion-icon class="icon-sm" name="checkmark-outline"></ion-icon></button>
+  </div>
+</mat-dialog-actions>

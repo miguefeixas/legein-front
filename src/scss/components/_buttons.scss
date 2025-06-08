@@ -44,6 +44,13 @@
     }
   }
 
+  &--danger {
+    &.mat-mdc-button:not(:disabled) {
+      @include mix.error-background(600);
+      color: white;
+    }
+  }
+
   &--lg {
     & > span {
       @include mix.padding-xs;

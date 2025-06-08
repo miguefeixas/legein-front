@@ -1,5 +1,7 @@
 <div class="main-padding column gap">
-  <h2>Libros</h2>
+  @if (!modal) {
+    <h2>Libros</h2>
+  }
   <form class="filters" (ngSubmit)="applyFilters()">
     <!-- Filtro por título -->
     <mat-form-field appearance="fill">
@@ -38,7 +40,19 @@
           <img src="assets/images/NoCover.png" alt="book title" class="book-cover" />
         }
         <h3>{{ book.title }}</h3>
-        <p>{{ book.authors?.[0]?.fullName }}</p>
+        @if (!modal) {
+          <p>{{ book.authors?.[0]?.fullName }}</p>
+        } @else {
+          <div class="row gap-xs vertical-center horizontal-space-between">
+            <p>{{ book.authors?.[0]?.fullName }}</p>
+            <button
+              mat-button
+              class="button button--primary"
+              (click)="addBookToListModal(book, $event)"><ion-icon class="icon-md" name="add-circle-outline"></ion-icon></button>
+          </div>
+
+        }
+
       </div>
     }
   </div>

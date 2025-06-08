@@ -1,1 +1,18 @@
-<p>users-lists works!</p>
+<div class="main-padding column gap">
+  <div class="row horizontal-space-between vertical-center">
+    <h2>{{ 'USERLIST.TITLE' | translate }}</h2>
+    <button mat-button class="button button--primary" (click)="openCreateListModal()">
+      {{ 'USERLIST.CREATE' | translate }}
+      <ion-icon class="icon-sm" name="add-outline"></ion-icon>
+    </button>
+  </div>
+  <div class="row gap flex-wrap vertical-center horizontal-start">
+    @for (list of lists; track list) {
+      <div class="book-list" (click)="openBookList(list.id)">
+        <h3>{{ list.name }}</h3>
+        <p>{{ 'USERLIST.NUMBEROFBOOKS' | translate: {'numberOfBooks': list.books?.length} }}</p>
+      </div>
+    }
+  </div>
+</div>
+

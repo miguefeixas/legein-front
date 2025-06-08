@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,8 +11,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { Book } from '../../../models/book';
 import { BookService } from '../../../services/book.service';
 import { Router } from '@angular/router';
+import { MatButton } from '@angular/material/button';
 
 @Component({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   selector: 'app-users-books',
   standalone: true,
   imports: [
@@ -21,12 +23,16 @@ import { Router } from '@angular/router';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButton,
   ],
   templateUrl: './users-books.component.html',
   styleUrls: ['./users-books.component.scss']
 })
 export class UsersBooksComponent {
+  @Input() modal = false;
+  @Output() selectedBook = new EventEmitter<Book>
+
   // Listas de libros: completa (después de aplicar filtros) y de la página actual.
   allBooks: Book[] = [];
   books: Book[] = [];
@@ -113,5 +119,10 @@ export class UsersBooksComponent {
    */
   goToBook(bookId: number): void {
     this.router.navigate(['/users/books', bookId]);
+  }
+
+  addBookToListModal(book: Book, event: MouseEvent): void {
+    event.stopPropagation();
+    this.selectedBook.emit(book);
   }
 }

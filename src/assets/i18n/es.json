@@ -318,6 +318,29 @@
   },
   "MAINMENU": {
     "LISTS": "Mis listas"
+  },
+  "USERLIST": {
+    "TITLE": "Mis listas de lectura",
+    "CREATE": "Crear lista",
+    "NUMBEROFBOOKS": "Número de libros: {{numberOfBooks}}",
+    "CREATELISTSUCCESS": "Lista creada correctamente"
+  },
+  "CREATEBOOKLIST": {
+    "TITLE": "Nueva lista de lectura",
+    "NAME": "Nombre de la lista",
+    "PLACEHOLDER": "Dale un nombre a tu lista",
+    "CONFIRM": "Crear lista",
+    "CANCEL": "Cancelar",
+    "REQUIRED": "El nombre de la lista es obligatorio"
+  },
+  "BOOKLIST": {
+    "NOBOOKS": "No hay libros en esta lista",
+    "ADDBOOK": "Añadir libro"
+  },
+  "DELETEBOOKFROMLIST": {
+    "TITLE": "Eliminar libro de la lista",
+    "MESSAGE": "¿Estás seguro de que quieres eliminar este libro de la lista?",
+    "CONFIRM": "Eliminar",
+    "CANCEL": "Cancelar"
   }
-
 }
